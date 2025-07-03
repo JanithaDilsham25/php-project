@@ -1,0 +1,8 @@
+{
+    "name": "php-project",
+    "description": "A PHP application",
+    "require": {
+        "php": "^8.1",
+        "composer/installers": "^1.10"
+    }
+}
