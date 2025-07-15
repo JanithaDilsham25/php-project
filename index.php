@@ -12,12 +12,13 @@
     <div class="mySlide">
         <div class="home">
             <div class="image">
-                <img src="/homepage/image/online6.jpg" alt="online">
+                <!-- Test if the image loads -->
+                <img src="/homepage/image/online6.jpg" alt="online6">
             </div>
         </div>
         <div class="home">
             <div class="image">
-                <img src="/homepage/image/online7.jpg" alt="online4">
+                <img src="/homepage/image/online7.jpg" alt="online7">
             </div>
         </div>
         <div class="home">
