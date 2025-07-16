@@ -3,7 +3,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Start session (if needed)
+// Start session (needed for session variables)
 session_start();
 
 // Include database connection
@@ -25,16 +25,20 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
 
     // Validate the inputs
     if (empty($name)) {
-        echo json_encode(['status' => 'error', 'message' => 'Name is required']);
+        $_SESSION['error'] = 'Name is required';
+        header("Location: contact.php");
         exit();
     } else if (empty($email)) {
-        echo json_encode(['status' => 'error', 'message' => 'Email is required']);
+        $_SESSION['error'] = 'Email is required';
+        header("Location: contact.php");
         exit();
     } else if (empty($subject)) {
-        echo json_encode(['status' => 'error', 'message' => 'Subject is required']);
+        $_SESSION['error'] = 'Subject is required';
+        header("Location: contact.php");
         exit();
     } else if (empty($message)) {
-        echo json_encode(['status' => 'error', 'message' => 'Message is required']);
+        $_SESSION['error'] = 'Message is required';
+        header("Location: contact.php");
         exit();
     }
 
@@ -44,13 +48,13 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
 
     // Execute the query and check if it was successful
     if ($stmt->execute()) {
-        // Redirect to contact page with success message
         $_SESSION['message'] = "Your message has been sent. Thank you!";
         header("Location: contact.php");
+        exit();
     } else {
-        // Redirect to contact page with error message
         $_SESSION['error'] = "There was an error sending your message. Please try again later.";
         header("Location: contact.php");
+        exit();
     }
 
     // Close the prepared statement
