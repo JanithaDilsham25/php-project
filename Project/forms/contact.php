@@ -44,9 +44,10 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
     // Execute the query and check if it was successful
     if ($stmt->execute()) {
-        echo json_encode(['status' => 'success', 'message' => 'Message sent successfully']);
+        header("Location: contact.php?success=Message sent successfully");
     } else {
-        echo json_encode(['status' => 'error', 'message' => 'Failed to send message']);
+        header("Location: contact.php?error=Failed to send message");
+        exit();
     }
 
     // Close the prepared statement
