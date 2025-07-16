@@ -1,44 +1,61 @@
 <?php
+// Enable error reporting for debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
+// Start session (if needed)
 session_start();
+
+// Include database connection
 include "../../connection.php"; 
 
-function validate($data)
-{
+// Function to sanitize input data
+function validate($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
+// Check if form fields are set
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
-    $name    = validate($_POST['name']);
-    $email   = validate($_POST['email']);
+
+    // Sanitize the input data
+    $name = validate($_POST['name']);
+    $email = validate($_POST['email']);
     $subject = validate($_POST['subject']);
     $message = validate($_POST['message']);
 
+    // Validate the inputs
     if (empty($name)) {
-        header("Location: contact.php?error=Name is required");
+        echo json_encode(['status' => 'error', 'message' => 'Name is required']);
         exit();
     } else if (empty($email)) {
-        header("Location: contact.php?error=Email is required");
+        echo json_encode(['status' => 'error', 'message' => 'Email is required']);
         exit();
     } else if (empty($subject)) {
-        header("Location: contact.php?error=Subject is required");
+        echo json_encode(['status' => 'error', 'message' => 'Subject is required']);
         exit();
     } else if (empty($message)) {
-        header("Location: contact.php?error=Message is required");
+        echo json_encode(['status' => 'error', 'message' => 'Message is required']);
         exit();
     }
 
+    // Prepare the SQL query to insert data
     $stmt = $conn->prepare("INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
+    // Execute the query and check if it was successful
     if ($stmt->execute()) {
-        header("Location: contact.php?success=Message sent successfully");
-        exit();
+        echo json_encode(['status' => 'success', 'message' => 'Message sent successfully']);
     } else {
-        header("Location: contact.php?error=Failed to send message");
-        exit();
+        echo json_encode(['status' => 'error', 'message' => 'Failed to send message']);
     }
+
+    // Close the prepared statement
+    $stmt->close();
 } else {
-    header("Location: contact.php?error=Please fill in all fields");
+    echo json_encode(['status' => 'error', 'message' => 'Please fill in all fields']);
     exit();
 }
+
+// Close the database connection
+$conn->close();
+?>
