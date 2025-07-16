@@ -1,5 +1,5 @@
 <?php
-// Enable error reporting for debugging
+// Enable error reporting for debugging (optional)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -23,36 +23,13 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     $subject = validate($_POST['subject']);
     $message = validate($_POST['message']);
 
-    // Validate the inputs
-    if (empty($name)) {
-        $_SESSION['error'] = 'Name is required';
-        header("Location: contact.php");
-        exit();
-    } else if (empty($email)) {
-        $_SESSION['error'] = 'Email is required';
-        header("Location: contact.php");
-        exit();
-    } else if (empty($subject)) {
-        $_SESSION['error'] = 'Subject is required';
-        header("Location: contact.php");
-        exit();
-    } else if (empty($message)) {
-        $_SESSION['error'] = 'Message is required';
-        header("Location: contact.php");
-        exit();
-    }
-
     // Prepare the SQL query to insert data
     $stmt = $conn->prepare("INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
-    // Execute the query and check if it was successful
+    // Execute the query
     if ($stmt->execute()) {
-        $_SESSION['message'] = "Your message has been sent. Thank you!";
-        header("Location: contact.php");
-        exit();
-    } else {
-        $_SESSION['error'] = "There was an error sending your message. Please try again later.";
+        // Redirect to contact page or any other page after success
         header("Location: contact.php");
         exit();
     }
@@ -60,6 +37,7 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     // Close the prepared statement
     $stmt->close();
 } else {
+    // Redirect if form fields are not set
     header("Location: contact.php");
     exit();
 }
