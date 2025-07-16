@@ -1,14 +1,9 @@
-/**
-* PHP Email Form Validation - v3.9
-* URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
-*/
 (function () {
   "use strict";
 
   let forms = document.querySelectorAll('.php-email-form');
 
-  forms.forEach( function(e) {
+  forms.forEach(function(e) {
     e.addEventListener('submit', function(event) {
       event.preventDefault();
 
@@ -25,23 +20,23 @@
       thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-      let formData = new FormData( thisForm );
+      let formData = new FormData(thisForm);
 
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
+      if (recaptcha) {
+        if (typeof grecaptcha !== "undefined") {
           grecaptcha.ready(function() {
             try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
+              grecaptcha.execute(recaptcha, { action: 'php_email_form_submit' })
               .then(token => {
                 formData.set('recaptcha-response', token);
                 php_email_form_submit(thisForm, action, formData);
-              })
-            } catch(error) {
+              });
+            } catch (error) {
               displayError(thisForm, error);
             }
           });
         } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!');
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
@@ -53,10 +48,10 @@
     fetch(action, {
       method: 'POST',
       body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
     .then(response => {
-      if( response.ok ) {
+      if (response.ok) {
         return response.text();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
@@ -72,6 +67,7 @@
       }
     })
     .catch((error) => {
+      console.log("Fetch Error:", error); // Log error for debugging
       displayError(thisForm, error);
     });
   }
