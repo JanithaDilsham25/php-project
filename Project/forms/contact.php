@@ -15,7 +15,7 @@ function validate($data) {
 }
 
 // Check if form fields are set
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
+if (isset($_POST['name']) && isset($_POST['email'])) {
 
     // Sanitize the input data
     $name = validate($_POST['name']);
