@@ -44,10 +44,13 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
 
     // Execute the query and check if it was successful
     if ($stmt->execute()) {
+        // Redirect to contact page with success message
+        $_SESSION['message'] = "Your message has been sent. Thank you!";
         header("Location: contact.php");
     } else {
+        // Redirect to contact page with error message
+        $_SESSION['error'] = "There was an error sending your message. Please try again later.";
         header("Location: contact.php");
-        exit();
     }
 
     // Close the prepared statement

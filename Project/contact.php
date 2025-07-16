@@ -1,3 +1,19 @@
+<?php
+// Start session to use session variables
+session_start();
+
+// Display success or error messages
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-success">' . $_SESSION['message'] . '</div>';
+    unset($_SESSION['message']); // Clear message after displaying
+}
+
+if (isset($_SESSION['error'])) {
+    echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
+    unset($_SESSION['error']); // Clear error after displaying
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
