@@ -29,7 +29,7 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
 
     // Execute the query
     if ($stmt->execute()) {
-        // Redirect to contact page or any other page after success
+        // Redirect after successful form submission
         header("Location: contact.php");
         exit();
     }
@@ -37,7 +37,7 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     // Close the prepared statement
     $stmt->close();
 } else {
-    // Redirect if form fields are not set
+    // If form data is not set, still redirect without any message
     header("Location: contact.php");
     exit();
 }
