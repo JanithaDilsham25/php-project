@@ -18,7 +18,8 @@
             exit();
         }
 
-        $stmt = $conn->prepare("SELECT email, password FROM users WHERE email = ?");
+        // Fetch all relevant fields for session use
+        $stmt = $conn->prepare("SELECT id, name, email, password FROM users WHERE email = ?");
         $stmt->bind_param("s",$email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -27,7 +28,11 @@
             $row = $result->fetch_assoc();
 
             if(password_verify($password,$row['password'])){
+                // ✅ Store user data in session
+                $_SESSION['user_id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['name'] = $row['name'];
+
                 header("Location: ../index.php?success=Login Successful");
                 exit();
             }else{
