@@ -53,7 +53,6 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     // Close the prepared statement
     $stmt->close();
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Please fill in all fields']);
     exit();
 }
 
