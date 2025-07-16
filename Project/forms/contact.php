@@ -1,41 +1,45 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+  session_start();
+  include "../connection.php";
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
+  function validate($data) {
+      return htmlspecialchars(stripslashes(trim($data)));
   }
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+  if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
+      $name = validate($_POST['name']);
+      $email = validate($_POST['email']);
+      $subject = validate($_POST['subject']);
+      $message = validate($_POST['message']);
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+      if(empty($name)){
+          header("Location: contact.php?error=Name is required");
+          exit();
+      } else if(empty($email)){
+          header("Location: contact.php?error=Email is required");
+          exit();
+      } else if(empty($subject)){
+          header("Location: contact.php?error=Subject is required");
+          exit();
+      } else if(empty($message)){
+          header("Location: contact.php?error=Message is required");
+          exit();
+      }
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+      $stmt = $conn->prepare("INSERT INTO contacts (name, email, ,subject, message) VALUES (?, ?, ?, ?)");
+      $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
-  echo $contact->send();
+      if($stmt->execute()){
+          header("Location: contact.php?success=Message sent successfully");
+          exit();
+      } else {
+          header("Location: contact.php?error=Failed to send message");
+          exit();
+      }
+  } else {
+      header("Location: contact.php?error=Please fill in all fields");
+      exit();
+  }
+
 ?>
