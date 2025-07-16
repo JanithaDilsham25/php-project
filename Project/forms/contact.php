@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include "../php-project/connection.php";
+include "connection.php"; 
 
 function validate($data)
 {
