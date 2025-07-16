@@ -44,15 +44,16 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
 
     // Execute the query and check if it was successful
     if ($stmt->execute()) {
-        header("Location: contact.php?success=Message sent successfully");
+        header("Location: contact.php");
     } else {
-        header("Location: contact.php?error=Failed to send message");
+        header("Location: contact.php");
         exit();
     }
 
     // Close the prepared statement
     $stmt->close();
 } else {
+    header("Location: contact.php");
     exit();
 }
 
