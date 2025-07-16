@@ -31,13 +31,13 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
     if ($stmt->execute()) {
         // Redirect after successful form submission
         $_SESSION['form_status'] = 'success';
-        header("Location: contact.html");
+        header("Location: ../contact.html");
         exit();
     } else {
         // If query execution fails, set error message
         $_SESSION['form_status'] = 'error';
         $_SESSION['error_message'] = 'Failed to submit form. Please try again later.';
-        header("Location: contact.html");
+        header("Location: ../contact.html");
         exit();
     }
 
@@ -47,7 +47,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
     // If form data is not set, redirect with error message
     $_SESSION['form_status'] = 'error';
     $_SESSION['error_message'] = 'Please fill in all fields.';
-    header("Location: contact.html");
+    header("Location: ../contact.html");
     exit();
 }
 
