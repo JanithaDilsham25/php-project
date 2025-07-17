@@ -52,12 +52,14 @@ session_start();
           <li><a href="/To-Do/index.php">To-Do</a></li>
           <li><a href="Project/contact.html">Contact</a></li>
 
-          <!-- Conditionally display login or logout based on session -->
+          <!-- Conditionally display login/logout and username based on session -->
           <?php if (isset($_SESSION['email'])): ?>
-            <!-- If user is logged in, show logout -->
+            <!-- If user is logged in, show username and logout -->
+            <li><span class="username">Welcome, <?php echo $_SESSION['name']; ?></span></li>
             <li><a href="Login/logout.php" class="logout">Logout</a></li>
           <?php else: ?>
-            <!-- If user is not logged in, show login -->
+            <!-- If user is not logged in, show "User" and login -->
+            <li><span class="username">Welcome, User</span></li>
             <li><a href="Login/login.php">Login</a></li>
           <?php endif; ?>
         </ul>
@@ -95,86 +97,10 @@ session_start();
         <p>Popular Courses</p>
       </div><!-- End Section Title -->
 
-            <div class="container">
-
+      <div class="container">
         <div class="row">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <!-- Add more courses here if needed -->
-
+          <!-- Course items here -->
         </div>
-
       </div>
 
     </section><!-- /Courses Section -->
