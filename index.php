@@ -50,10 +50,15 @@ session_start();
           <li><a href="Project/about.html">About</a></li>
           <li><a href="Project/courses.html">Courses</a></li>
           <li><a href="/To-Do/index.php">To-Do</a></li>
-          <li><a href="Project/contact.html">Contact</a></li>
+          <li><a href="Project/contact.html">Contact</a></li> 
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-          <!-- Conditionally display login/logout and username based on session -->
-          <?php if (isset($_SESSION['email'])): ?>
+      <a class="btn-getstarted" href="Project/courses.html">Get Started</a>
+
+      <!-- Conditionally display login/logout and username based on session -->
+      <?php if (isset($_SESSION['email'])): ?>
             <!-- If user is logged in, show username and logout -->
             <li><span class="btn-getstarted"><?php echo $_SESSION['name']; ?></span></li>
             <li><a href="Login/logout.php" class="logout">Logout</a></li>
@@ -62,12 +67,6 @@ session_start();
             <li><span class="btn-getstarted">User</span></li>
             <li><a href="Login/login.php">Login</a></li>
           <?php endif; ?>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-      <a class="btn-getstarted" href="Project/courses.html">Get Started</a>
-
     </div>
   </header>
 
