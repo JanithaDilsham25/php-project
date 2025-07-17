@@ -55,11 +55,11 @@ session_start();
           <!-- Conditionally display login/logout and username based on session -->
           <?php if (isset($_SESSION['email'])): ?>
             <!-- If user is logged in, show username and logout -->
-            <li><?php echo $_SESSION['name']; ?></li>
+            <li><a href="index.php" class="active"><?php echo $_SESSION['name']; ?></a></li>
             <li><a href="Login/logout.php" class="logout">Logout</a></li>
           <?php else: ?>
             <!-- If user is not logged in, show "User" and login -->
-            <li>User</li>
+            <li><a href="index.php" class="active">User</a></li>
             <li><a href="Login/login.php">Login</a></li>
           <?php endif; ?>
 
