@@ -95,10 +95,84 @@ session_start();
         <p>Popular Courses</p>
       </div><!-- End Section Title -->
 
-      <div class="container">
+            <div class="container">
 
         <div class="row">
-          <!-- Course items here -->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <!-- Add more courses here if needed -->
+
         </div>
 
       </div>
@@ -122,6 +196,9 @@ session_start();
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
   <!-- Vendor JS Files -->
   <script src="Project/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="Project/assets/vendor/php-email-form/validate.js"></script>
@@ -134,4 +211,5 @@ session_start();
   <script src="Project/assets/js/main.js"></script>
 
 </body>
+
 </html>
