@@ -33,7 +33,7 @@
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['name'] = $row['name'];
 
-                header("Location: ../index.html?success=Login Successful");
+                header("Location: ../index.php?success=Login Successful");
                 exit();
             }else{
                 header("Location: login.php?error=Incorrect Email or Password");
