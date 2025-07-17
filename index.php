@@ -89,7 +89,7 @@ session_start();
 
     </section><!-- /Hero Section -->
 
-    <!-- Courses Section -->
+ <!-- Courses Section -->
     <section id="courses" class="courses section">
 
       <!-- Section Title -->
@@ -99,9 +99,85 @@ session_start();
       </div><!-- End Section Title -->
 
       <div class="container">
+
         <div class="row">
-          <!-- Course items here -->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <!-- Add more courses here if needed -->
+
         </div>
+
       </div>
 
     </section><!-- /Courses Section -->
@@ -140,3 +216,115 @@ session_start();
 </body>
 
 </html>
+
+
+
+////////////////////
+
+todo.php
+
+
+<?php
+// Include the database connection
+include('../connection.php');
+
+// Add a new task
+if (isset($_POST['todoi'])) {
+    // Sanitize input
+    $task = $conn->real_escape_string(trim($_POST['task']));
+    
+    if (!empty($task)) {
+        // Insert the task into the database
+        $stmt = $conn->prepare("INSERT INTO todo_list (task, mark) VALUES (?, ?)");
+        $mark = 'Uncome'; // Default mark
+        $stmt->bind_param("ss", $task, $mark);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    // Redirect back to the index page after adding
+    header("Location: index.php");
+    exit;
+}
+
+// Delete a task
+if (isset($_POST['delete_task'])) {
+    // Get the task ID
+    $task_id = $_POST['task_id'];
+
+    // Delete the task from the database
+    $stmt = $conn->prepare("DELETE FROM todo_list WHERE todo_id = ?");
+    $stmt->bind_param("i", $task_id);
+    $stmt->execute();
+    $stmt->close();
+
+    // Redirect back to the index page after deleting
+    header("Location: index.php");
+    exit;
+}
+?>
+
+
+
+///// todo index
+
+
+
+<?php
+// Include the database connection
+include('../connection.php');
+
+// Fetch tasks from the database
+$query = "SELECT * FROM todo_list ORDER BY created_at DESC";
+$result = $conn->query($query);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="todo-container">
+        <h1>To-Do List</h1>
+
+        <!-- Form to add a new task -->
+        <form method="POST" action="todo.php" class="todo-form">
+            <input type="text" name="task" placeholder="Add a new task" class="todo-input" required>
+            <button type="submit" name="todoi" class="todo-btn">Add Task</button>
+        </form>
+
+        <h2>Task List</h2>
+        <ul class="todo-list">
+            <?php
+            // Display tasks from the database
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<li class="todo-item">';
+                    echo '<span>' . htmlspecialchars($row['task']) . ' (' . $row['mark'] . ')</span>';
+
+                    // Remove the Edit option form
+                    // Only show the Delete form now
+                    echo '<form method="POST" action="todo.php" style="display:inline;">
+                            <input type="hidden" name="task_id" value="' . $row['todo_id'] . '">
+                            <button type="submit" name="delete_task" class="remove-btn">Delete</button>
+                        </form>';
+                    echo '</li>';
+                }
+            } else {
+                echo '<li>No tasks available</li>';
+            }
+            ?>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<?php
+$conn->close();
+?>
