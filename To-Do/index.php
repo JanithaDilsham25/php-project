@@ -2,9 +2,21 @@
 // Include the database connection
 include('../connection.php');
 
-// Fetch tasks from the database
-$query = "SELECT * FROM todo_list ORDER BY created_at DESC";
-$result = $conn->query($query);
+// Start the session to get the logged-in user
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: Login/login.php");
+    exit();
+}
+
+// Fetch tasks for the logged-in user from the database
+$query = "SELECT * FROM todo_list WHERE user_id = ? ORDER BY created_at DESC";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $_SESSION['user_id']); // Bind the logged-in user's ID
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -34,8 +46,6 @@ $result = $conn->query($query);
                     echo '<li class="todo-item">';
                     echo '<span>' . htmlspecialchars($row['task']) . ' (' . $row['mark'] . ')</span>';
 
-                    // Remove the Edit option form
-                    // Only show the Delete form now
                     echo '<form method="POST" action="todo.php" style="display:inline;">
                             <input type="hidden" name="task_id" value="' . $row['todo_id'] . '">
                             <button type="submit" name="delete_task" class="remove-btn">Delete</button>
@@ -54,5 +64,6 @@ $result = $conn->query($query);
 </html>
 
 <?php
+// Close database connection
 $conn->close();
 ?>
