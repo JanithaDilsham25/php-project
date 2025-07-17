@@ -29,10 +29,37 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
     // Execute the query
     if ($stmt->execute()) {
-        // Redirect after successful form submission
-        $_SESSION['form_status'] = 'success';
-        header("Location: ../contact.html");
-        exit();
+        // Send email notification after successful form submission
+
+        // Recipient email (where you want to receive the message)
+        $to = "janithadilsham@gmail.com";  // Replace with your email
+        $email_subject = "New message from contact form";
+        $email_body = "
+        You have received a new message from your website contact form.\n\n
+        Here are the details:\n\n
+        Name: $name\n
+        Email: $email\n
+        Subject: $subject\n
+        Message: $message
+        ";
+
+        // Set the email headers
+        $headers = "From: noreply@yourdomain.com\r\n";
+        $headers .= "Reply-To: $email\r\n";  // Reply to the customer’s email
+
+        // Send the email
+        if (mail($to, $email_subject, $email_body, $headers)) {
+            // Redirect after successful form submission
+            $_SESSION['form_status'] = 'success';
+            header("Location: ../contact.html");
+            exit();
+        } else {
+            // If email fails to send
+            $_SESSION['form_status'] = 'error';
+            $_SESSION['error_message'] = 'Form submitted, but email could not be sent. Please try again later.';
+            header("Location: ../contact.html");
+            exit();
+        }
     } else {
         // If query execution fails, set error message
         $_SESSION['form_status'] = 'error';
@@ -53,4 +80,4 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
-?>
+?>  
