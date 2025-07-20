@@ -7,7 +7,10 @@ error_reporting(E_ALL);
 session_start();
 
 // Include database connection
-include "../../connection.php"; 
+include "../../connection.php";
+
+// Include PHPMailer library
+require '../../vendor/autoload.php';  // Make sure the path is correct
 
 // Function to sanitize input data
 function validate($data) {
@@ -31,10 +34,32 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
     if ($stmt->execute()) {
         // Send email notification after successful form submission
 
-        // Recipient email (where you want to receive the message)
-        $to = "janithadilsham@gmail.com";  // Replace with your email
-        $email_subject = "New message from contact form";
-        $email_body = "
+        // Get SMTP credentials from Heroku environment variables
+        $smtp_username = getenv('MAILERTOGO_SMTP_USERNAME');
+        $smtp_password = getenv('MAILERTOGO_SMTP_PASSWORD');
+        $smtp_host = getenv('MAILERTOGO_SMTP_HOST');
+        $smtp_port = getenv('MAILERTOGO_SMTP_PORT');
+
+        // Create PHPMailer instance
+        $mail = new PHPMailer\PHPMailer\PHPMailer();
+
+        // Server settings
+        $mail->isSMTP();
+        $mail->Host = $smtp_host;  // Mailer To Go SMTP host
+        $mail->SMTPAuth = true;
+        $mail->Username = $smtp_username;  // SMTP username
+        $mail->Password = $smtp_password;  // SMTP password
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = $smtp_port;  // Typically 587 for TLS
+
+        // Recipients
+        $mail->setFrom('arachchi12911@usci.ruh.ac.lk', 'php-project');
+        $mail->addAddress('janithadilsham@gmail.com', 'Janita Dilsham');  // Replace with your email
+
+        // Content
+        $mail->isHTML(true);
+        $mail->Subject = "New message from contact form";
+        $mail->Body    = "
         You have received a new message from your website contact form.\n\n
         Here are the details:\n\n
         Name: $name\n
@@ -43,12 +68,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
         Message: $message
         ";
 
-        // Set the email headers
-        $headers = "From: noreply@yourdomain.com\r\n";
-        $headers .= "Reply-To: $email\r\n";  // Reply to the customer’s email
-
         // Send the email
-        if (mail($to, $email_subject, $email_body, $headers)) {
+        if ($mail->send()) {
             // Redirect after successful form submission
             $_SESSION['form_status'] = 'success';
             header("Location: ../contact.html");
@@ -80,4 +101,4 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
-?>  
+?>

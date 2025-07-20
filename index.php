@@ -89,7 +89,7 @@ session_start();
 
     </section><!-- /Hero Section -->
 
- <!-- Courses Section -->
+<!-- Courses Section -->
     <section id="courses" class="courses section">
 
       <!-- Section Title -->
