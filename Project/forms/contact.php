@@ -10,7 +10,7 @@ session_start();
 include "../../connection.php";
 
 // Include PHPMailer library
-require '../php-project/vendor/autoload.php';  // Adjusted path to vendor
+require '../../vendor/autoload.php';  // Adjusted path to vendor
 
 // Function to sanitize input data
 function validate($data) {
