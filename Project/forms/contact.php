@@ -10,11 +10,10 @@ session_start();
 include "../../connection.php";
 
 // Include PHPMailer library
-require '../../vendor/autoload.php'; // Make sure the path is correct
+require '../php-project/vendor/autoload.php';  // Adjusted path to vendor
 
 // Function to sanitize input data
-function validate($data)
-{
+function validate($data) {
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
@@ -22,8 +21,8 @@ function validate($data)
 if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) && isset($_POST['message'])) {
 
     // Sanitize the input data
-    $name    = validate($_POST['name']);
-    $email   = validate($_POST['email']);
+    $name = validate($_POST['name']);
+    $email = validate($_POST['email']);
     $subject = validate($_POST['subject']);
     $message = validate($_POST['message']);
 
@@ -36,55 +35,56 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
         // Send email notification after successful form submission
 
         // Get SMTP credentials from Heroku environment variables
-        $smtp_username = getenv('MAILERTOGO_SMTP_USER');
+        $smtp_username = getenv('MAILERTOGO_SMTP_USER');  // Correct variable name
         $smtp_password = getenv('MAILERTOGO_SMTP_PASSWORD');
-        $smtp_host     = getenv('MAILERTOGO_SMTP_HOST');
-        $smtp_port     = getenv('MAILERTOGO_SMTP_PORT');
+        $smtp_host = getenv('MAILERTOGO_SMTP_HOST');
+        $smtp_port = getenv('MAILERTOGO_SMTP_PORT');
 
         // Create PHPMailer instance
         $mail = new PHPMailer\PHPMailer\PHPMailer();
 
         // Server settings
-        $mail->isSMTP();
-        $mail->Host       = $smtp_host; // Mailer To Go SMTP host
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $smtp_username; // SMTP username
-        $mail->Password   = $smtp_password; // SMTP password
-        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = $smtp_port; // Typically 587 for TLS
+        $mail->isSMTP();  // Use SMTP
+        $mail->Host = $smtp_host;  // Mailer To Go SMTP host
+        $mail->SMTPAuth = true;  // Enable SMTP authentication
+        $mail->Username = $smtp_username;  // SMTP username (Mailer's username)
+        $mail->Password = $smtp_password;  // SMTP password (Mailer’s password)
+        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;  // Encryption type (TLS)
+        $mail->Port = $smtp_port;  // Mailer To Go SMTP port (typically 587 for TLS)
 
         // Recipients
-        $mail->setFrom('arachchi12911@usci.ruh.ac.lk', 'php-project');
-        $mail->addAddress('janithadilsham@gmail.com', 'Janita Dilsham'); // Replace with your email
+        $mail->setFrom('arachchi12911@usci.ruh.ac.lk', 'php-project');  // Sender's email address
+        $mail->addAddress('janithadilsham@gmail.com', 'Janita Dilsham');  // Recipient's email address
 
-        // Content
-        $mail->isHTML(true);
-        $mail->Subject = "New message from contact form";
+        // Content of the email
+        $mail->isHTML(true);  // Set email format to HTML
+        $mail->Subject = "New message from contact form";  // Email subject
         $mail->Body    = "
-        You have received a new message from your website contact form.\n\n
-        Here are the details:\n\n
-        Name: $name\n
-        Email: $email\n
-        Subject: $subject\n
-        Message: $message
-        ";
+            You have received a new message from your website contact form.\n\n
+            Here are the details:\n\n
+            Name: $name\n
+            Email: $email\n
+            Subject: $subject\n
+            Message: $message
+        ";  // Email body content
 
         // Send the email
         if ($mail->send()) {
-            // Redirect after successful form submission
+            // Email sent successfully, redirect with success
             $_SESSION['form_status'] = 'success';
             header("Location: ../contact.html");
             exit();
         } else {
-            // If email fails to send
-            $_SESSION['form_status']   = 'error';
+            // If email fails to send, log the error and redirect with an error message
+            error_log("Mailer Error: " . $mail->ErrorInfo);  // Log error to Heroku logs
+            $_SESSION['form_status'] = 'error';
             $_SESSION['error_message'] = 'Form submitted, but email could not be sent. Please try again later.';
             header("Location: ../contact.html");
             exit();
         }
     } else {
         // If query execution fails, set error message
-        $_SESSION['form_status']   = 'error';
+        $_SESSION['form_status'] = 'error';
         $_SESSION['error_message'] = 'Failed to submit form. Please try again later.';
         header("Location: ../contact.html");
         exit();
@@ -94,7 +94,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
     $stmt->close();
 } else {
     // If form data is not set, redirect with error message
-    $_SESSION['form_status']   = 'error';
+    $_SESSION['form_status'] = 'error';
     $_SESSION['error_message'] = 'Please fill in all fields.';
     header("Location: ../contact.html");
     exit();
@@ -102,3 +102,4 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
+?>
