@@ -3,7 +3,7 @@
         'name' => 'janitha/php-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c5c22c71bdb2fa78bab5fe9fa2d88165c23548f3',
+        'reference' => '626c1de955a0ea244c7dca0c18b6fe36db858a54',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'janitha/php-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c5c22c71bdb2fa78bab5fe9fa2d88165c23548f3',
+            'reference' => '626c1de955a0ea244c7dca0c18b6fe36db858a54',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
