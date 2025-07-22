@@ -233,7 +233,7 @@ textarea {
         font-size: 1.6em;
     }
 
-    /* Align the buttons inside the form correctly */
+    /* Align the buttons inside the Add User form correctly */
     .add-btn, .submit-btn, .cancel-btn {
         width: 100%; /* Full width for form buttons */
         padding: 15px;
@@ -249,11 +249,12 @@ textarea {
         width: 100%;
     }
 
-    /* Align buttons inside the Add User form */
+    /* Align buttons inside the Add User form vertically */
     #add-user-form {
         display: flex;
         flex-direction: column;
-        gap: 15px; /* Space between buttons */
+        gap: 20px; /* Space between buttons */
+        width: 100%;
     }
 
     #add-user-form button {
