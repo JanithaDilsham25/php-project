@@ -30,7 +30,7 @@ body {
 header {
     background: linear-gradient(135deg, #1e3c72, #2a5298); /* Gradient header */
     color: white;
-    padding: 20px 50px;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,6 +39,7 @@ header {
     flex-wrap: wrap; /* Allow wrapping for mobile */
     gap: 20px; /* Add gap between items */
     box-sizing: border-box; /* Prevents any overflow or misalignment */
+    text-align: center;
 }
 
 .website-name {
@@ -46,8 +47,6 @@ header {
     font-weight: 700;
     letter-spacing: 2px;
     flex: 1 1 100%; /* Allow it to grow/shrink and center it */
-    text-align: center; /* Ensure it's centered */
-    margin-bottom: 10px; /* Add space below for mobile */
 }
 
 nav {
@@ -55,8 +54,6 @@ nav {
     justify-content: center;
     align-items: center;
     flex: 1 1 100%; /* Allow it to grow/shrink */
-    justify-content: flex-end; /* Align the "Login" button to the right */
-    gap: 20px; /* Spacing between links */
 }
 
 nav a {
