@@ -70,6 +70,7 @@ nav a:hover {
     background-color: transparent; /* No background */
 }
 
+/* Users section and form sections */
 .users-section, .courses-section, .add-user-form-container {
     background-color: white; /* White background for sections */
     padding: 35px;
@@ -150,7 +151,7 @@ button {
 
 /* Form Styling */
 #add-user-form-container {
-    display: none;
+    display: none; /* Hide Add User Form by default */
     flex-direction: column;
     background-color: white;
     padding: 30px;
@@ -181,7 +182,7 @@ textarea {
     resize: none;
 }
 
-/* Make the page fully responsive for mobile */
+/* Mobile Responsiveness Fixes */
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
@@ -221,4 +222,30 @@ textarea {
     h2 {
         font-size: 1.6em;
     }
+
+    /* Fix the Add User button's alignment in the form */
+    .add-btn, .submit-btn, .cancel-btn {
+        width: 100%; /* Make buttons take full width */
+        padding: 15px;
+    }
+
+    /* Fix tab sections when switching */
+    .add-user-form-container {
+        display: block !important;
+    }
+}
+
+/* Additional Alignment for Buttons in Form */
+#add-user-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#add-user-btn button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
 }
