@@ -248,4 +248,15 @@ textarea {
     .users-section, .courses-section, .add-user-form-container {
         width: 100%;
     }
+
+    /* Align buttons inside the Add User form */
+    #add-user-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Space between buttons */
+    }
+
+    #add-user-form button {
+        width: 100%;
+    }
 }
