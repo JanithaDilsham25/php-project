@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link href="../Project/assets/css/main.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="page-background">
         <header>
-            <div class="website-name">Educate</div>
-            <nav>
-                <a href="login.html" class="logout">Login</a>
-            </nav>
+            <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+                <a href="index.php" class="logo d-flex align-items-center me-auto">
+                    <h1 class="sitename">EDUCATE</h1>
+                </a>
+
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="index.php" class="active">Home</a></li>
+                        <li><a href="Project/about.html">About</a></li>
+                        <li><a href="Project/courses.html">Courses</a></li>
+                        <li><a href="/To-Do/index.php">To-Do</a></li>
+                        <li><a href="/Admin//admin.html">Chat</a></li>
+                        <li><a href="Project/contact.html">Contact</a></li>
+
+                    
+
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+
+                <a class="btn-getstarted" href="Project/courses.html">Get Started</a>
+
+            </div>
         </header>
 
         <main class="container">
@@ -47,7 +70,8 @@
                     <label for="user-email">Email:</label>
                     <input type="email" id="user-email" name="user-email" required>
                     <button type="submit" class="submit-btn">Add User</button>
-                    <button type="button" id="cancel-user-form" class="cancel-btn" onclick="cancelAddUserForm()">Cancel</button>
+                    <button type="button" id="cancel-user-form" class="cancel-btn"
+                        onclick="cancelAddUserForm()">Cancel</button>
                 </form>
             </section>
 
@@ -70,4 +94,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
