@@ -83,7 +83,7 @@ function executeChatBot(userInput) {
                 displayBotResponse("Sorry, I'm having trouble connecting right now. Please try again later.");
             }
         };
-        xhttp.open("GET", "chatbot/data/responses.json", true);
+        xhttp.open("GET", "./data/responses.json", true);
         xhttp.send();
     }
     else {
