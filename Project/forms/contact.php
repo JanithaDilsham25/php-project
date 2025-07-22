@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 session_start();
 
 // Include database connection
-include "../../connection.php"; 
+include "../../connection.php";
 
 // Function to sanitize input data
 function validate($data) {
@@ -23,47 +23,21 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
     $subject = validate($_POST['subject']);
     $message = validate($_POST['message']);
 
-    // Prepare the SQL query to insert data
+    // Prepare the SQL query to insert data into the database
     $stmt = $conn->prepare("INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $subject, $message);
 
     // Execute the query
     if ($stmt->execute()) {
-        // Send email notification after successful form submission
-
-        // Recipient email (where you want to receive the message)
-        $to = "janithadilsham@gmail.com";  // Replace with your email
-        $email_subject = "New message from contact form";
-        $email_body = "
-        You have received a new message from your website contact form.\n\n
-        Here are the details:\n\n
-        Name: $name\n
-        Email: $email\n
-        Subject: $subject\n
-        Message: $message
-        ";
-
-        // Set the email headers
-        $headers = "From: noreply@yourdomain.com\r\n";
-        $headers .= "Reply-To: $email\r\n";  // Reply to the customer’s email
-
-        // Send the email
-        if (mail($to, $email_subject, $email_body, $headers)) {
-            // Redirect after successful form submission
-            $_SESSION['form_status'] = 'success';
-            header("Location: ../contact.html");
-            exit();
-        } else {
-            // If email fails to send
-            $_SESSION['form_status'] = 'error';
-            $_SESSION['error_message'] = 'Form submitted, but email could not be sent. Please try again later.';
-            header("Location: ../contact.html");
-            exit();
-        }
+        // Data inserted successfully, redirect with success message
+        $_SESSION['form_status'] = 'success';
+        $_SESSION['success_message'] = 'Your message has been successfully submitted!';
+        header("Location: ../contact.html");
+        exit();
     } else {
         // If query execution fails, set error message
         $_SESSION['form_status'] = 'error';
-        $_SESSION['error_message'] = 'Failed to submit form. Please try again later.';
+        $_SESSION['error_message'] = 'Failed to submit the form. Please try again later.';
         header("Location: ../contact.html");
         exit();
     }
@@ -80,4 +54,4 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
-?>  
+?>
