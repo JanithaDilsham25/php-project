@@ -36,18 +36,23 @@ header {
     align-items: center;
     width: 100%; /* Ensure the header stretches to full width */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap; /* Allow wrapping for mobile */
+    gap: 20px; /* Add gap between items */
 }
 
 .website-name {
     font-size: 2.5em;
     font-weight: 700;
     letter-spacing: 2px;
+    flex: 1 1 auto; /* Allow it to grow/shrink */
+    text-align: center;
 }
 
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1 1 auto; /* Allow it to grow/shrink */
 }
 
 nav a {
@@ -233,6 +238,7 @@ textarea {
         padding: 20px;
         flex-direction: column;
         align-items: center;
+        gap: 20px; /* Space between items */
     }
 
     /* Adjust button padding for mobile */
