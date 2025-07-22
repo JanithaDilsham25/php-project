@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", ():void => {
-    var send_button: boolean | any | null = document.querySelector('#send_button');
+    const send_button: boolean | any | null = document.querySelector('#send_button');
     if (!send_button) return;
 
     // console.log('Send button found!');

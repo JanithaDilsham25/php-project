@@ -21,7 +21,6 @@
                     <div id="mydiv">
                         <p>Hello! How can I assist you today?</p>
                     </div>
-                    <button>
                 </div>
                 <div class="chat-footer relative border-green-400 bg-gray-700 w-[95%] p-2 mx-auto flex items-center justify-between">
                     <input type="text"  placeholder="Type your message..." class=" p-2 w-full md:w-[80%] rounded-lg bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500">

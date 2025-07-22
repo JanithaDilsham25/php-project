@@ -92,7 +92,10 @@ function executeChatBot(userInput) {
 }
 function findBestResponse(userInput, data) {
     var responses = data.responses;
-    // Convert user input to lowercase for better matching
+    if (!responses || !Array.isArray(responses)) {
+        console.error('Invalid responses data format');
+        return "I'm sorry, I didn't understand that. How can I help you?";
+    }
     var normalizedInput = userInput.toLowerCase().trim();
     // Try to find a matching response based on keywords
     for (var _i = 0, responses_1 = responses; _i < responses_1.length; _i++) {
@@ -104,21 +107,18 @@ function findBestResponse(userInput, data) {
             }
         }
     }
-    // If no keyword match found, return default response
     return data.defaultResponse || "I'm sorry, I didn't understand that. How can I help you?";
 }
 function displayBotResponse(response) {
     var chatBody = document.querySelector('.chat-body #mydiv');
     if (chatBody) {
-        // Add a small delay to make the conversation feel more natural
         setTimeout(function () {
             var botMessageElement = document.createElement('p');
             botMessageElement.className = 'p-3 bg-blue-500 my-2 rounded-r-md rounded-tl-md text-white max-w-xs break-words ml-auto'; // Bot message styling
             botMessageElement.textContent = response;
             chatBody.appendChild(botMessageElement);
-            // Scroll to bottom after adding bot response
             scrollToBottom();
-        }, 4500); // 500ms delay for more natural feel
+        }, 1000); // 500ms delay for more natural feel
     }
 }
 function scrollToBottom() {
