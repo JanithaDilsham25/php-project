@@ -11,6 +11,7 @@ body {
     color: #333;
     padding: 0;
     margin: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -18,10 +19,11 @@ body {
 /* Full page background */
 .page-background {
     min-height: 100vh;
-    background-color: #e6f7ff;
+    background-color: #e6f7ff; /* Light blue background for entire page */
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px; /* Add space at the bottom */
 }
 
 /* Header Section */
@@ -32,25 +34,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 100%; /* Ensure the header stretches to full width */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    gap: 20px;
+    flex-wrap: wrap; /* Allow wrapping for mobile */
+    gap: 20px; /* Add gap between items */
 }
 
 .website-name {
     font-size: 2.5em;
     font-weight: 700;
     letter-spacing: 2px;
-    flex: 1 1 100%;
+    flex: 1 1 100%; /* Allow it to grow/shrink and center it */
+    text-align: center; /* Ensure it's centered */
 }
 
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 1 100%;
+    flex: 1 1 100%; /* Allow it to grow/shrink */
 }
 
 nav a {
@@ -77,16 +79,23 @@ nav a:hover {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: transparent;
+    background-color: transparent; /* Transparent background */
     width: 100%;
 }
 
+/* Adjust sections for mobile view */
 .users-section, .courses-section, .add-user-form-container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
+    background-color: white; /* White background for sections */
+    padding: 35px;
+    border-radius: 15px; /* Round corners */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.users-section:hover, .courses-section:hover, .add-user-form-container:hover {
+    transform: translateY(-8px); /* Slight hover lift effect */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
 
 h2 {
@@ -94,7 +103,7 @@ h2 {
     margin-bottom: 20px;
     font-weight: 700;
     color: #333;
-    text-align: center;
+    text-align: center; /* Center-align section titles */
 }
 
 /* Table styling */
@@ -156,7 +165,7 @@ button {
 
 /* Form Styling */
 #add-user-form-container {
-    display: none;
+    display: none; /* Hide Add User Form by default */
     flex-direction: column;
     background-color: white;
     padding: 30px;
@@ -188,32 +197,48 @@ textarea {
     resize: none;
 }
 
-/* Mobile-first design */
+/* Fully responsive for mobile */
 @media (max-width: 768px) {
-    /* Stack everything vertically on mobile */
     .container {
-        grid-template-columns: 1fr; /* One column layout */
+        grid-template-columns: 1fr; /* Single column layout on mobile */
         padding: 20px;
     }
 
-    /* Full-width buttons on mobile */
+    /* Adjust table font size on mobile */
+    table {
+        font-size: 12px;
+    }
+
+    /* Full width for buttons */
     button {
         width: 100%;
         padding: 14px;
     }
 
-    /* Full-width input fields */
+    /* Form container full width */
+    #add-user-form-container {
+        max-width: 100%;
+    }
+
+    /* Fix the input field behavior on mobile */
     input[type="text"], input[type="email"], textarea {
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* Adjust header layout on mobile */
+    /* Ensure form elements align properly */
+    #add-user-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Space between form fields */
+    }
+
+    /* Header layout adjustments for mobile */
     header {
+        padding: 20px;
         flex-direction: column;
         align-items: center;
-        padding: 20px;
-        text-align: center;
+        gap: 20px; /* Space between items */
     }
 
     .website-name {
@@ -236,7 +261,7 @@ textarea {
         font-size: 1.6em;
     }
 
-    /* Form buttons full width */
+    /* Full width for form buttons */
     .add-btn, .submit-btn, .cancel-btn {
         width: 100%;
         padding: 15px;
