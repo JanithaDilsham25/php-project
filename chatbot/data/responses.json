@@ -1,0 +1,41 @@
+{
+  "responses": [
+    {
+      "keywords": ["hello", "hi", "hey", "greetings"],
+      "response": "Hello! How can I help you today?"
+    },
+    {
+      "keywords": ["how are you", "how do you do", "what's up"],
+      "response": "I'm doing great! Thanks for asking. How can I assist you?"
+    },
+    {
+      "keywords": ["help", "support", "assistance"],
+      "response": "I'm here to help! Please let me know what you need assistance with."
+    },
+    {
+      "keywords": ["courses", "course", "class", "classes"],
+      "response": "We offer various courses including web development, programming, and design. Would you like to know more about any specific course?"
+    },
+    {
+      "keywords": ["contact", "phone", "email", "reach"],
+      "response": "You can contact us through our contact page or reach out via email. How would you prefer to get in touch?"
+    },
+    {
+      "keywords": ["about", "company", "who are you"],
+      "response": "We are an educational platform providing quality courses and learning resources. Learn more on our about page!"
+    },
+    {
+      "keywords": ["price", "cost", "fee", "payment"],
+      "response": "Our course prices vary depending on the program. Please check our courses page for detailed pricing information."
+    },
+    {
+      "keywords": ["thank you", "thanks", "appreciate"],
+      "response": "You're very welcome! Is there anything else I can help you with?"
+    },
+    {
+      "keywords": ["bye", "goodbye", "see you", "exit"],
+      "response": "Goodbye! Have a great day and feel free to come back anytime you need help!"
+    }
+  ],
+  "defaultResponse": "I'm sorry, I didn't quite understand that. Could you please rephrase your question or ask about our courses, contact information, or how I can help you?"
+}
