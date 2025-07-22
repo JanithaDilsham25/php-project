@@ -38,21 +38,25 @@ header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     flex-wrap: wrap; /* Allow wrapping for mobile */
     gap: 20px; /* Add gap between items */
+    box-sizing: border-box; /* Prevents any overflow or misalignment */
 }
 
 .website-name {
     font-size: 2.5em;
     font-weight: 700;
     letter-spacing: 2px;
-    flex: 1 1 auto; /* Allow it to grow/shrink */
-    text-align: center;
+    flex: 1 1 100%; /* Allow it to grow/shrink and center it */
+    text-align: center; /* Ensure it's centered */
+    margin-bottom: 10px; /* Add space below for mobile */
 }
 
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 1 auto; /* Allow it to grow/shrink */
+    flex: 1 1 100%; /* Allow it to grow/shrink */
+    justify-content: flex-end; /* Align the "Login" button to the right */
+    gap: 20px; /* Spacing between links */
 }
 
 nav a {
@@ -241,10 +245,20 @@ textarea {
         gap: 20px; /* Space between items */
     }
 
-    /* Adjust button padding for mobile */
+    .website-name {
+        font-size: 2em; /* Adjust size for mobile */
+        margin-bottom: 15px; /* Space for mobile */
+    }
+
+    nav {
+        width: 100%; /* Ensure nav takes full width */
+        justify-content: center; /* Center the login button on mobile */
+        margin-top: 10px; /* Add space above the nav links */
+    }
+
     nav a {
-        padding: 14px 20px;
-        font-size: 14px;
+        padding: 14px 20px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for better mobile readability */
     }
 
     /* Reduce heading size for mobile */
