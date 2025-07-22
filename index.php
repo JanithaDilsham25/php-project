@@ -50,6 +50,7 @@ session_start();
           <li><a href="Project/about.html">About</a></li>
           <li><a href="Project/courses.html">Courses</a></li>
           <li><a href="/To-Do/index.php">To-Do</a></li>
+          <li><a href="/chatbot/index.php">Chat</a></li>
           <li><a href="Project/contact.html">Contact</a></li>
 
           <!-- Conditionally display login/logout and username based on session -->
