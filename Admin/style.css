@@ -215,6 +215,19 @@ textarea {
         max-width: 100%;
     }
 
+    /* Fix the input field behavior on mobile */
+    input[type="text"], input[type="email"], textarea {
+        width: 100% !important; /* Ensure 100% width consistently */
+        box-sizing: border-box; /* Ensure no overflow */
+    }
+
+    /* Ensure form elements align properly */
+    #add-user-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Space between form fields */
+    }
+
     /* Header layout adjustments for mobile */
     header {
         padding: 20px;
@@ -233,7 +246,7 @@ textarea {
         font-size: 1.6em;
     }
 
-    /* Align the buttons inside the Add User form correctly */
+    /* Full width for form buttons */
     .add-btn, .submit-btn, .cancel-btn {
         width: 100%; /* Full width for form buttons */
         padding: 15px;
@@ -246,26 +259,6 @@ textarea {
 
     /* Make the page elements more compact */
     .users-section, .courses-section, .add-user-form-container {
-        width: 100%;
-    }
-
-    /* Align buttons inside the Add User form vertically */
-    #add-user-form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px; /* Space between buttons */
-        width: 100%;
-    }
-
-    #add-user-form button {
-        width: 100%;
-    }
-
-    /* Fix the Add User form buttons vertical alignment */
-    .button-container {
-        display: flex;
-        flex-direction: column; /* Stack buttons vertically */
-        gap: 15px; /* Space between buttons */
         width: 100%;
     }
 }
