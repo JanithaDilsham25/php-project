@@ -11,7 +11,6 @@ body {
     color: #333;
     padding: 0;
     margin: 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -19,11 +18,10 @@ body {
 /* Full page background */
 .page-background {
     min-height: 100vh;
-    background-color: #e6f7ff; /* Light blue background for entire page */
+    background-color: #e6f7ff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 50px; /* Add space at the bottom */
 }
 
 /* Header Section */
@@ -34,26 +32,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* Ensure the header stretches to full width */
+    width: 100%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    flex-wrap: wrap; /* Allow wrapping for mobile */
-    gap: 20px; /* Add gap between items */
-    box-sizing: border-box; /* Prevents any overflow or misalignment */
     text-align: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px;
 }
 
 .website-name {
     font-size: 2.5em;
     font-weight: 700;
     letter-spacing: 2px;
-    flex: 1 1 100%; /* Allow it to grow/shrink and center it */
+    flex: 1 1 100%;
 }
 
 nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 1 100%; /* Allow it to grow/shrink */
+    flex: 1 1 100%;
 }
 
 nav a {
@@ -75,28 +72,21 @@ nav a:hover {
 /* Main Content Section */
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    padding: 40px 60px;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background-color: transparent; /* Transparent background */
+    background-color: transparent;
     width: 100%;
 }
 
-/* Adjust sections for mobile view */
 .users-section, .courses-section, .add-user-form-container {
-    background-color: white; /* White background for sections */
-    padding: 35px;
-    border-radius: 15px; /* Round corners */
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 100%;
-}
-
-.users-section:hover, .courses-section:hover, .add-user-form-container:hover {
-    transform: translateY(-8px); /* Slight hover lift effect */
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
 
 h2 {
@@ -104,7 +94,7 @@ h2 {
     margin-bottom: 20px;
     font-weight: 700;
     color: #333;
-    text-align: center; /* Center-align section titles */
+    text-align: center;
 }
 
 /* Table styling */
@@ -166,7 +156,7 @@ button {
 
 /* Form Styling */
 #add-user-form-container {
-    display: none; /* Hide Add User Form by default */
+    display: none;
     flex-direction: column;
     background-color: white;
     padding: 30px;
@@ -198,83 +188,60 @@ textarea {
     resize: none;
 }
 
-/* Fully responsive for mobile */
+/* Mobile-first design */
 @media (max-width: 768px) {
+    /* Stack everything vertically on mobile */
     .container {
-        grid-template-columns: 1fr; /* Single column layout on mobile */
+        grid-template-columns: 1fr; /* One column layout */
         padding: 20px;
     }
 
-    /* Adjust table font size on mobile */
-    table {
-        font-size: 12px;
-    }
-
-    /* Full width for buttons */
+    /* Full-width buttons on mobile */
     button {
         width: 100%;
         padding: 14px;
     }
 
-    /* Form container full width */
-    #add-user-form-container {
-        max-width: 100%;
-    }
-
-    /* Fix the input field behavior on mobile */
+    /* Full-width input fields */
     input[type="text"], input[type="email"], textarea {
-        width: 100% !important; /* Ensure 100% width consistently */
-        box-sizing: border-box; /* Ensure no overflow */
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* Ensure form elements align properly */
-    #add-user-form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px; /* Space between form fields */
-    }
-
-    /* Header layout adjustments for mobile */
+    /* Adjust header layout on mobile */
     header {
-        padding: 20px;
         flex-direction: column;
         align-items: center;
-        gap: 20px; /* Space between items */
+        padding: 20px;
+        text-align: center;
     }
 
     .website-name {
-        font-size: 2em; /* Adjust size for mobile */
-        margin-bottom: 15px; /* Space for mobile */
+        font-size: 2em;
+        margin-bottom: 15px;
     }
 
     nav {
-        width: 100%; /* Ensure nav takes full width */
-        justify-content: center; /* Center the login button on mobile */
-        margin-top: 10px; /* Add space above the nav links */
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
     }
 
     nav a {
-        padding: 14px 20px; /* Adjust padding for smaller screens */
-        font-size: 14px; /* Adjust font size for better mobile readability */
+        padding: 14px 20px;
+        font-size: 14px;
     }
 
-    /* Reduce heading size for mobile */
     h2 {
         font-size: 1.6em;
     }
 
-    /* Full width for form buttons */
+    /* Form buttons full width */
     .add-btn, .submit-btn, .cancel-btn {
-        width: 100%; /* Full width for form buttons */
+        width: 100%;
         padding: 15px;
     }
 
-    /* Hide the Manage Users section when adding a user */
-    .users-section {
-        display: none; /* Hide when form is shown */
-    }
-
-    /* Make the page elements more compact */
     .users-section, .courses-section, .add-user-form-container {
         width: 100%;
     }
