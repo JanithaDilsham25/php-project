@@ -21,12 +21,12 @@ function addUser(event) {
     cell2.textContent = userName; // User Name
     cell3.textContent = userEmail; // User Email
 
-    // Create action button (like Delete)
+    // Create action button (Delete)
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.classList.add("delete-btn");
     deleteButton.onclick = function () {
-        table.deleteRow(newRow.rowIndex); // Delete the row
+        table.deleteRow(newRow.rowIndex); // Delete the row from the table
     };
     cell4.appendChild(deleteButton);
 
