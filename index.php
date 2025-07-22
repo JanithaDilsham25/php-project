@@ -180,7 +180,8 @@ session_start();
 
       </div>
 
-    </section><!-- /Courses Section -->
+    </section>
+    <!-- /Courses Section -->
 
   </main>
 
