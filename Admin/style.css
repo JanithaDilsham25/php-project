@@ -38,6 +38,8 @@ header {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     flex-wrap: wrap; /* Allow wrapping for mobile */
     gap: 20px; /* Add gap between items */
+    box-sizing: border-box; /* Prevents any overflow or misalignment */
+    text-align: center;
 }
 
 .website-name {
@@ -45,7 +47,6 @@ header {
     font-weight: 700;
     letter-spacing: 2px;
     flex: 1 1 100%; /* Allow it to grow/shrink and center it */
-    text-align: center; /* Ensure it's centered */
 }
 
 nav {
@@ -74,9 +75,9 @@ nav a:hover {
 /* Main Content Section */
 .container {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 40px 60px;
     max-width: 1200px;
     margin: 0 auto;
     background-color: transparent; /* Transparent background */
@@ -222,8 +223,8 @@ textarea {
 
     /* Fix the input field behavior on mobile */
     input[type="text"], input[type="email"], textarea {
-        width: 100%;
-        box-sizing: border-box;
+        width: 100% !important; /* Ensure 100% width consistently */
+        box-sizing: border-box; /* Ensure no overflow */
     }
 
     /* Ensure form elements align properly */
@@ -242,31 +243,38 @@ textarea {
     }
 
     .website-name {
-        font-size: 2em;
-        margin-bottom: 15px;
+        font-size: 2em; /* Adjust size for mobile */
+        margin-bottom: 15px; /* Space for mobile */
     }
 
     nav {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
+        width: 100%; /* Ensure nav takes full width */
+        justify-content: center; /* Center the login button on mobile */
+        margin-top: 10px; /* Add space above the nav links */
     }
 
     nav a {
-        padding: 14px 20px;
-        font-size: 14px;
+        padding: 14px 20px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Adjust font size for better mobile readability */
     }
 
+    /* Reduce heading size for mobile */
     h2 {
         font-size: 1.6em;
     }
 
     /* Full width for form buttons */
     .add-btn, .submit-btn, .cancel-btn {
-        width: 100%;
+        width: 100%; /* Full width for form buttons */
         padding: 15px;
     }
 
+    /* Hide the Manage Users section when adding a user */
+    .users-section {
+        display: none; /* Hide when form is shown */
+    }
+
+    /* Make the page elements more compact */
     .users-section, .courses-section, .add-user-form-container {
         width: 100%;
     }
