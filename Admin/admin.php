@@ -37,8 +37,15 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="admin.php" class="active">Admin</a></li>
-                    <li><a href="../Login/logout.php" class="logout">Logout</a></li>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <!-- If user is logged in, show username and logout -->
+                        <li><a href="admin.php" class="active"><?php echo $_SESSION['name']; ?></a></li>
+                        <li><a href="Login/logout.php" class="logout">Logout</a></li>
+                    <?php else: ?>
+                        <!-- If user is not logged in, show "User" and login -->
+                        <li><a href="admin.php" class="active">User</a></li>
+                        <li><a href="Login/login.php">Login</a></li>
+                    <?php endif; ?>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
