@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "/connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -86,45 +87,38 @@ session_start();
 
                 <!-- View Users Table -->
                 <h4>View Users</h4>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>john@example.com</td>
-                            <td>
-                                <a href="edit_user.php?id=1" class="btn btn-warning">Edit</a>
-                                <a href="delete_user.php?id=1" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>jane@example.com</td>
-                            <td>
-                                <a href="edit_user.php?id=2" class="btn btn-warning">Edit</a>
-                                <a href="delete_user.php?id=2" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Michael Brown</td>
-                            <td>michael@example.com</td>
-                            <td>
-                                <a href="edit_user.php?id=3" class="btn btn-warning">Edit</a>
-                                <a href="delete_user.php?id=3" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    
+                    $sql = "SELECT id, name, email FROM users";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['id'] . "</td>";
+                            echo "<td>" . $row['username'] . "</td>";
+                            echo "<td>" . $row['email'] . "</td>";
+                            echo "<td>";
+                            echo "<a href='delete_user.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No users found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
             </div>
         </section>
 
