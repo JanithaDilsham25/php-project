@@ -22,7 +22,7 @@
 
     <!-- Main CSS File -->
     <link href="../Project/assets/css/main.css" rel="stylesheet">
-    <link href="Admin/style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
 </head>
 
