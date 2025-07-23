@@ -1,3 +1,8 @@
+<?php
+session_start();
+include "../connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,8 +42,15 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="admin.php" class="active">Admin</a></li>
-                    <li><a href="../Login/logout.php" class="logout">Logout</a></li>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <!-- If user is logged in, show username and logout -->
+                        <li><a href="admin.php" class="active"><?php echo $_SESSION['name']; ?></a></li>
+                        <li><a href="/Login/logout.php" class="logout">Logout</a></li>
+                    <?php else: ?>
+                        <!-- If user is not logged in, show "User" and login -->
+                        <li><a href="admin.php" class="active">User</a></li>
+                        <li><a href="/Login/login.php">Login</a></li>
+                    <?php endif; ?>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -67,7 +79,7 @@
                 <!-- Add User Form -->
                 <form action="add_user.php" method="POST">
                     <h4>Add User</h4>
-                    <input type="text" name="username" placeholder="Enter Username" required>
+                    <input type="text" name="name" placeholder="Enter Username" required>
                     <input type="email" name="email" placeholder="Enter Email" required>
                     <input type="password" name="password" placeholder="Enter Password" required>
                     <button type="submit" class="btn btn-primary">Add User</button>
@@ -75,45 +87,40 @@
 
                 <!-- View Users Table -->
                 <h4>View Users</h4>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>john@example.com</td>
-                            <td>
-                                <a href="edit_user.php?id=1" class="btn btn-warning">Edit</a>
-                                <a href="delete_user.php?id=1" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>jane@example.com</td>
-                            <td>
-                                <a href="edit_user.php?id=2" class="btn btn-warning">Edit</a>
-                                <a href="delete_user.php?id=2" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Michael Brown</td>
-                            <td>michael@example.com</td>
-                            <td>
-                                <a href="edit_user.php?id=3" class="btn btn-warning">Edit</a>
-                                <a href="delete_user.php?id=3" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    // SQL query to fetch all users
+                    $sql = "SELECT id, name, email FROM users"; // Update 'users' if your table name is different
+                    $result = $conn->query($sql);
+
+                    // Check if there are results
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['id'] . "</td>";
+                            echo "<td>" . $row['name'] . "</td>";
+                            echo "<td>" . $row['email'] . "</td>";
+                            echo "<td>";
+                            echo "<a href='delete_user.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No users found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
             </div>
         </section>
 
@@ -124,25 +131,11 @@
                 <!-- Add Course Form -->
                 <form action="add_course.php" method="POST">
                     <h4>Add Course</h4>
-                    <input type="text" name="course_name" placeholder="Enter Course Name" required>
-                    <input type="text" name="course_description" placeholder="Enter Course Description" required>
+                    <input type="text" name="title" placeholder="Enter Course Name" required>
+                    <input type="text" name="description" placeholder="Enter Course Description" required>
+                    <input type="text" name="img" placeholder="Enter Course Image Link" required>
+                    <input type="text" name="link" placeholder="Enter Course Link" required>
                     <button type="submit" class="btn btn-primary">Add Course</button>
-                </form>
-
-                <!-- Edit Course Form -->
-                <form action="edit_course.php" method="POST">
-                    <h4>Edit Course</h4>
-                    <input type="number" name="course_id" placeholder="Enter Course ID" required>
-                    <input type="text" name="new_course_name" placeholder="Enter New Course Name" required>
-                    <input type="text" name="new_course_description" placeholder="Enter New Course Description" required>
-                    <button type="submit" class="btn btn-warning">Edit Course</button>
-                </form>
-
-                <!-- Remove Course Form -->
-                <form action="remove_course.php" method="POST">
-                    <h4>Remove Course</h4>
-                    <input type="number" name="course_id" placeholder="Enter Course ID to remove" required>
-                    <button type="submit" class="btn btn-danger">Remove Course</button>
                 </form>
 
                 <!-- View Courses Table -->
@@ -153,37 +146,33 @@
                             <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Description</th>
+                            <th>Image</th>
+                            <th>Link</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>101</td>
-                            <td>Web Development</td>
-                            <td>Learn the basics of web development with HTML, CSS, and JavaScript.</td>
-                            <td>
-                                <a href="edit_course.php?id=101" class="btn btn-warning">Edit</a>
-                                <a href="remove_course.php?id=101" class="btn btn-danger">Remove</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>Database Management</td>
-                            <td>Learn how to design and manage databases using SQL.</td>
-                            <td>
-                                <a href="edit_course.php?id=102" class="btn btn-warning">Edit</a>
-                                <a href="remove_course.php?id=102" class="btn btn-danger">Remove</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td>Software Engineering</td>
-                            <td>Learn software development techniques and methodologies.</td>
-                            <td>
-                                <a href="edit_course.php?id=103" class="btn btn-warning">Edit</a>
-                                <a href="remove_course.php?id=103" class="btn btn-danger">Remove</a>
-                            </td>
-                        </tr>
+                        <?php
+                            $sql1 = "SELECT id, title, description, img, link FROM courses"; // Update 'users' if your table name is different
+                            $result = $conn->query($sql1);
+                            if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['id'] . "</td>";
+                            echo "<td>" . $row['title'] . "</td>";
+                            echo "<td>" . $row['description'] . "</td>";
+                            echo "<td>" . $row['img'] . "</td>";
+                            echo "<td>" . $row['link'] . "</td>";
+                            echo "<td>";
+                            echo "<a href='delete_course.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No users found</td></tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
