@@ -131,10 +131,10 @@ include "../connection.php";
                 <!-- Add Course Form -->
                 <form action="add_course.php" method="POST">
                     <h4>Add Course</h4>
-                    <input type="text" name="course_name" placeholder="Enter Course Name" required>
-                    <input type="text" name="course_description" placeholder="Enter Course Description" required>
-                    <input type="text" name="course_img" placeholder="Enter Course Image Link" required>
-                    <input type="text" name="course_Link" placeholder="Enter Course Link" required>
+                    <input type="text" name="title" placeholder="Enter Course Name" required>
+                    <input type="text" name="description" placeholder="Enter Course Description" required>
+                    <input type="text" name="img" placeholder="Enter Course Image Link" required>
+                    <input type="text" name="link" placeholder="Enter Course Link" required>
                     <button type="submit" class="btn btn-primary">Add Course</button>
                 </form>
 
