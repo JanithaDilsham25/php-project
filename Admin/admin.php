@@ -160,37 +160,33 @@ include "../connection.php";
                             <th>Course ID</th>
                             <th>Course Name</th>
                             <th>Description</th>
+                            <th>Image</th>
+                            <th>Link</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>101</td>
-                            <td>Web Development</td>
-                            <td>Learn the basics of web development with HTML, CSS, and JavaScript.</td>
-                            <td>
-                                <a href="edit_course.php?id=101" class="btn btn-warning">Edit</a>
-                                <a href="remove_course.php?id=101" class="btn btn-danger">Remove</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>102</td>
-                            <td>Database Management</td>
-                            <td>Learn how to design and manage databases using SQL.</td>
-                            <td>
-                                <a href="edit_course.php?id=102" class="btn btn-warning">Edit</a>
-                                <a href="remove_course.php?id=102" class="btn btn-danger">Remove</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>103</td>
-                            <td>Software Engineering</td>
-                            <td>Learn software development techniques and methodologies.</td>
-                            <td>
-                                <a href="edit_course.php?id=103" class="btn btn-warning">Edit</a>
-                                <a href="remove_course.php?id=103" class="btn btn-danger">Remove</a>
-                            </td>
-                        </tr>
+                        <?php
+                            $sql1 = "SELECT id, title, description, img, link FROM courses"; // Update 'users' if your table name is different
+                            $result = $conn->query($sql1);
+                            if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row['id'] . "</td>";
+                            echo "<td>" . $row['title'] . "</td>";
+                            echo "<td>" . $row['description'] . "</td>";
+                            echo "<td>" . $row['img'] . "</td>";
+                            echo "<td>" . $row['link'] . "</td>";
+                            echo "<td>";
+                            echo "<a href='delete_course.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='4'>No users found</td></tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
