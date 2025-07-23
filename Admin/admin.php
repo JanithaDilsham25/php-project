@@ -79,7 +79,7 @@ include "../connection.php";
                 <!-- Add User Form -->
                 <form action="add_user.php" method="POST">
                     <h4>Add User</h4>
-                    <input type="text" name="username" placeholder="Enter Username" required>
+                    <input type="text" name="name" placeholder="Enter Username" required>
                     <input type="email" name="email" placeholder="Enter Email" required>
                     <input type="password" name="password" placeholder="Enter Password" required>
                     <button type="submit" class="btn btn-primary">Add User</button>
