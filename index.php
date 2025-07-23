@@ -49,17 +49,16 @@ session_start();
           <li><a href="index.php" class="active">Home</a></li>
           <li><a href="Project/about.html">About</a></li>
           <li><a href="Project/courses.html">Courses</a></li>
+          <li><a href="Project/quiz/quiz.php">Quiz</a></li> <!-- 👈 Quiz Section Added -->
           <li><a href="/To-Do/index.php">To-Do</a></li>
-          <li><a href="Admin//admin.php">Chat</a></li>
+          <li><a href="Admin/admin.php">Chat</a></li>
           <li><a href="Project/contact.html">Contact</a></li>
 
           <!-- Conditionally display login/logout and username based on session -->
           <?php if (isset($_SESSION['email'])): ?>
-            <!-- If user is logged in, show username and logout -->
             <li><a href="index.php" class="active"><?php echo $_SESSION['name']; ?></a></li>
             <li><a href="Login/logout.php" class="logout">Logout</a></li>
           <?php else: ?>
-            <!-- If user is not logged in, show "User" and login -->
             <li><a href="index.php" class="active">User</a></li>
             <li><a href="Login/login.php">Login</a></li>
           <?php endif; ?>
@@ -81,104 +80,37 @@ session_start();
 
       <div class="container">
         <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are a team of talented designers making websites with Bootstrap
-        </p>
+        <p data-aos="fade-up" data-aos-delay="200">We are a team of talented designers making websites with Bootstrap</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
           <a href="Project/courses.html" class="btn-get-started">Get Started</a>
         </div>
       </div>
+    </section>
+    <!-- /Hero Section -->
 
-    </section><!-- /Hero Section -->
-
-<!-- Courses Section -->
+    <!-- Courses Section -->
     <section id="courses" class="courses section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Courses</h2>
         <p>Popular Courses</p>
-      </div><!-- End Section Title -->
+      </div>
 
       <div class="container">
-
         <div class="row">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
+          <?php for ($i = 0; $i < 6; $i++): ?>
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+              <div class="course-item">
+                <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+                <div class="course-content">
+                  <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                  <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                </div>
               </div>
             </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <!-- Add more courses here if needed -->
-
+          <?php endfor; ?>
         </div>
-
       </div>
 
     </section>
@@ -187,19 +119,14 @@ session_start();
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
-
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">PHP-PROJECT</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Designed by Group 09
-      </div>
+      <div class="credits">Designed by Group 09</div>
     </div>
-
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
