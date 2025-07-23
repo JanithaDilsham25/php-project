@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "/connection.php";
+include "../connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -98,17 +98,20 @@ include "/connection.php";
                 </thead>
                 <tbody>
                     <?php
-                    
-                    $sql = "SELECT id, name, email FROM users";
+                    // SQL query to fetch all users
+                    $sql = "SELECT id, name, email FROM users"; // Update 'users' if your table name is different
                     $result = $conn->query($sql);
 
+                    // Check if there are results
                     if ($result->num_rows > 0) {
+                        // Output data of each row
                         while($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . $row['id'] . "</td>";
                             echo "<td>" . $row['name'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>";
+                            echo "<a href='edit_user.php?id=" . $row['id'] . "' class='btn btn-warning'>Edit</a> ";
                             echo "<a href='delete_user.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
                             echo "</td>";
                             echo "</tr>";
