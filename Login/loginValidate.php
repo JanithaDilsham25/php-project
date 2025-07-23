@@ -32,6 +32,11 @@
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['name'] = $row['name'];
+                
+                if($_SESSION['email'] == "janithadilsham@gmail.com"){
+                    header("Location: ../Admin/admin.php?success=Login Successful");
+                    exit();
+                }
 
                 header("Location: ../index.php?success=Login Successful");
                 exit();
