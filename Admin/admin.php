@@ -111,7 +111,6 @@ include "../connection.php";
                             echo "<td>" . $row['name'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>";
-                            
                             echo "<a href='delete_user.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
                             echo "</td>";
                             echo "</tr>";
