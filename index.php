@@ -172,7 +172,20 @@ session_start();
                   dolores dolorem tempore.</p>
               </div>
             </div>
-          </div> <!-- End Course Item-->
+          </div>
+          
+          <?php foreach ($courses as $course): ?>
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="course-item">
+                        <img src="<?php echo $course['img']; ?>" class="img-fluid" alt="...">
+                        <div class="course-content">
+                            <h3><a href="<?php echo $course['link']; ?>"><?php echo $course['title']; ?></a></h3>
+                            <p class="description"><?php echo $course['description']; ?></p>
+                        </div>
+                    </div>
+                </div>
+          <?php endforeach; ?>
+          <!-- End Course Item-->
 
           <!-- Add more courses here if needed -->
 
