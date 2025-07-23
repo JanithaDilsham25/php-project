@@ -133,23 +133,9 @@ include "../connection.php";
                     <h4>Add Course</h4>
                     <input type="text" name="course_name" placeholder="Enter Course Name" required>
                     <input type="text" name="course_description" placeholder="Enter Course Description" required>
+                    <input type="text" name="course_img" placeholder="Enter Course Image Link" required>
+                    <input type="text" name="course_Link" placeholder="Enter Course Link" required>
                     <button type="submit" class="btn btn-primary">Add Course</button>
-                </form>
-
-                <!-- Edit Course Form -->
-                <form action="edit_course.php" method="POST">
-                    <h4>Edit Course</h4>
-                    <input type="number" name="course_id" placeholder="Enter Course ID" required>
-                    <input type="text" name="new_course_name" placeholder="Enter New Course Name" required>
-                    <input type="text" name="new_course_description" placeholder="Enter New Course Description" required>
-                    <button type="submit" class="btn btn-warning">Edit Course</button>
-                </form>
-
-                <!-- Remove Course Form -->
-                <form action="remove_course.php" method="POST">
-                    <h4>Remove Course</h4>
-                    <input type="number" name="course_id" placeholder="Enter Course ID to remove" required>
-                    <button type="submit" class="btn btn-danger">Remove Course</button>
                 </form>
 
                 <!-- View Courses Table -->
