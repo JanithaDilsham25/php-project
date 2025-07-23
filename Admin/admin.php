@@ -106,7 +106,7 @@ include "/connection.php";
                         while($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . $row['id'] . "</td>";
-                            echo "<td>" . $row['username'] . "</td>";
+                            echo "<td>" . $row['name'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>";
                             echo "<a href='delete_user.php?id=" . $row['id'] . "' class='btn btn-danger'>Delete</a>";
