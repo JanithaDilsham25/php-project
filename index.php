@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +90,7 @@ session_start();
 
     </section><!-- /Hero Section -->
 
-<!-- Courses Section -->
+    <!-- Courses Section -->
     <section id="courses" class="courses section">
 
       <!-- Section Title -->
@@ -173,18 +174,34 @@ session_start();
               </div>
             </div>
           </div>
-          
-          <?php foreach ($courses as $course): ?>
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="course-item">
-                        <img src="<?php echo $course['img']; ?>" class="img-fluid" alt="...">
-                        <div class="course-content">
-                            <h3><a href="<?php echo $course['link']; ?>"><?php echo $course['title']; ?></a></h3>
-                            <p class="description"><?php echo $course['description']; ?></p>
-                        </div>
-                    </div>
+
+          <?php
+          // Fetch courses from the database
+          $sql = "SELECT title, description, img, link FROM courses";
+          $result = $conn->query($sql);
+
+          // Check if there are any courses in the database
+          if ($result->num_rows > 0) {
+            // Output data of each course
+            while ($row = $result->fetch_assoc()) {
+          ?>
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+                <div class="course-item">
+                  <img src="<?php echo $row['img']; ?>" class="img-fluid" alt="...">
+                  <div class="course-content">
+                    <h3><a href="<?php echo $row['link']; ?>"><?php echo $row['title']; ?></a></h3>
+                    <p class="description"><?php echo $row['description']; ?></p>
+                  </div>
                 </div>
-          <?php endforeach; ?>
+              </div>
+          <?php
+            }
+          } else {
+            echo "No courses available.";
+          }
+
+          $conn->close();
+          ?>
           <!-- End Course Item-->
 
           <!-- Add more courses here if needed -->
