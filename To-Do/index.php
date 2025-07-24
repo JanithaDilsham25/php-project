@@ -100,6 +100,8 @@ $result = $stmt->get_result();
         </div><!-- End Page Title -->
     </div>
 
+    </main>
+
     <div class="todo-container">
             <h1>To-Do List</h1>
 
@@ -130,8 +132,6 @@ $result = $stmt->get_result();
                 ?>
             </ul>
         </div>
-        
-    </main>
 
     <footer id="footer" class="footer position-relative light-background">
 
