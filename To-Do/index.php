@@ -61,11 +61,11 @@ $result = $stmt->get_result();
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="../index.php">Home<br></a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="quiz/quiz.php">Quiz</a></li>
-                    <li><a href="../To-Do/index.php">To-Do</a></li>
-                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="../Project/about.html">About</a></li>
+                    <li><a href="../Project/courses.html">Courses</a></li>
+                    <li><a href="../Project/quiz/quiz.php">Quiz</a></li>
+                    <li><a href="index.php">To-Do</a></li>
+                    <li><a href="../Project/contact.html" class="active">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -153,15 +153,15 @@ $result = $stmt->get_result();
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="../Project/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../Project/assets/vendor/php-email-form/validate.js"></script>
-    <script src="../Project/assets/vendor/aos/aos.js"></script>
-    <script src="../Project/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../Project/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../Project/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/Project/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/Project/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/Project/assets/vendor/aos/aos.js"></script>
+    <script src="/Project/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/Project/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/Project/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="../Project/assets/js/main.js"></script>
+    <script src="/Project/assets/js/main.js"></script>
     <script src="script.js"></script>       
 </body>
 
