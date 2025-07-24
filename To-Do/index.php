@@ -98,39 +98,39 @@ $result = $stmt->get_result();
                 </div>
             </nav>
         </div><!-- End Page Title -->
+        <div class="todo-container">
+            <h1>To-Do List</h1>
 
-    </main>
+            <!-- Form to add a new task -->
+            <form method="POST" action="todo.php" class="todo-form">
+                <input type="text" name="task" placeholder="Add a new task" class="todo-input" required>
+                <button type="submit" name="todoi" class="todo-btn">Add Task</button>
+            </form>
 
-    <div class="todo-container">
-        <h1>To-Do List</h1>
+            <h2>Task List</h2>
+            <ul class="todo-list">
+                <?php
+                // Display tasks from the database
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<li class="todo-item">';
+                        echo '<span>' . htmlspecialchars($row['task']) . ' (' . $row['mark'] . ')</span>';
 
-        <!-- Form to add a new task -->
-        <form method="POST" action="todo.php" class="todo-form">
-            <input type="text" name="task" placeholder="Add a new task" class="todo-input" required>
-            <button type="submit" name="todoi" class="todo-btn">Add Task</button>
-        </form>
-
-        <h2>Task List</h2>
-        <ul class="todo-list">
-            <?php
-            // Display tasks from the database
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<li class="todo-item">';
-                    echo '<span>' . htmlspecialchars($row['task']) . ' (' . $row['mark'] . ')</span>';
-
-                    echo '<form method="POST" action="todo.php" style="display:inline;">
+                        echo '<form method="POST" action="todo.php" style="display:inline;">
                             <input type="hidden" name="task_id" value="' . $row['todo_id'] . '">
                             <button type="submit" name="delete_task" class="remove-btn">Delete</button>
                         </form>';
-                    echo '</li>';
+                        echo '</li>';
+                    }
+                } else {
+                    echo '<li>No tasks available</li>';
                 }
-            } else {
-                echo '<li>No tasks available</li>';
-            }
-            ?>
-        </ul>
-    </div>
+                ?>
+            </ul>
+        </div>
+    </main>
+
+
 
     <footer id="footer" class="footer position-relative light-background">
         <div class="container copyright text-center mt-4">
@@ -157,7 +157,7 @@ $result = $stmt->get_result();
 
     <!-- Main JS File -->
     <script src="/Project/assets/js/main.js"></script>
-    <script src="script.js"></script>       
+    <script src="script.js"></script>
 </body>
 
 </html>
