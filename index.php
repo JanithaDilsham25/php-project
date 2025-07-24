@@ -78,8 +78,8 @@ include "connection.php";
       <img src="Project/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
       <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are a team of talented designers making websites with Bootstrap
+        <h2 data-aos="fade-up" data-aos-delay="100">Upgrade Your Skills for Tomorrow</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Explore interactive online courses crafted to prepare you for real-world success, anytime, anywhere.
         </p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
           <a href="Project/courses.html" class="btn-get-started">Get Started</a>
