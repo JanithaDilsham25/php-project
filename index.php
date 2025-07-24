@@ -29,7 +29,8 @@ include "connection.php";
 
   <!-- Main CSS File -->
   <link href="Project/assets/css/main.css" rel="stylesheet">
-
+  <link rel="chatbot/style.css" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="index-page">
@@ -210,6 +211,24 @@ include "connection.php";
     </section>
     <!-- /Courses Section -->
 
+    <button class="flex fixed bottom-10 right-5 z-20 shadow-md" id="chat-bot-icon"><img src="chat-bot.png" class="w-[60px]" alt="Chat Bot"></button>
+        <div id="chat-bot" class=" fixed bottom-20 right-2 z-10 w-[350px] h-[500px] rounded-lg">
+            <div class="chat-bot-container relative hidden w-full p-2 h-full bg-gray-800 text-white flex flex-col rounded-lg">
+                <div class="text-center relative chat-header text-green-400 text-2xl font-bold border-b-2 border-green-500 p-2">
+                    <h2 class="my-2">Chat Bot</h2>
+                </div>
+                <div class="chat-body relative p-4 my-4 overflow-y-auto flex-1">
+                    <div id="mydiv">
+                        <p>Hello! How can I assist you today?</p>
+                    </div>
+                </div>
+                <div class="chat-footer relative border-green-400 bg-gray-700 w-[95%] p-2 mx-auto flex items-center justify-between">
+                    <input type="text"  placeholder="Type your message..." class=" p-2 w-full md:w-[80%] rounded-lg bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button id="send_button"><img src="send.png" alt="send"  class="w-[35px] z-20"/></button>
+                </div>
+            </div>
+        </div>
+
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
@@ -236,6 +255,7 @@ include "connection.php";
   <script src="Project/assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="Project/assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="Project/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="chatbot/style.css"></script>        
 
   <!-- Main JS File -->
   <script src="Project/assets/js/main.js"></script>
