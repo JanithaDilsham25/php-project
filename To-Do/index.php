@@ -98,8 +98,9 @@ $result = $stmt->get_result();
                 </div>
             </nav>
         </div><!-- End Page Title -->
+    </div>
 
-        <div class="todo-container">
+    <div class="todo-container">
             <h1>To-Do List</h1>
 
             <!-- Form to add a new task -->
@@ -129,7 +130,6 @@ $result = $stmt->get_result();
                 ?>
             </ul>
         </div>
-    </div>
         
     </main>
 
