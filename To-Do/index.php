@@ -161,3 +161,8 @@ $result = $stmt->get_result();
 </body>
 
 </html>
+
+<?php
+// Close database connection
+$conn->close();
+?>
