@@ -10,16 +10,18 @@ include "connection.php";
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>PHP-GROUP 09</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="Project/assets/img/favicon.png" rel="icon">
+  <link href="Project/meassets/img/favicon.png" rel="icon">
   <link href="Project/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&family=Raleway&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
@@ -50,16 +52,19 @@ include "connection.php";
           <li><a href="Project/courses.html">Courses</a></li>
           <li><a href="Project/quiz/quiz.php">Quiz</a></li>
           <li><a href="/To-Do/index.php">To-Do</a></li>
-          <li><a href="Admin/admin.php">Chat</a></li>
           <li><a href="Project/contact.html">Contact</a></li>
 
+          <!-- Conditionally display login/logout and username based on session -->
           <?php if (isset($_SESSION['email'])): ?>
-            <li><a href="index.php"><?php echo $_SESSION['name']; ?></a></li>
+            <!-- If user is logged in, show username and logout -->
+            <li><a href="index.php" class="active"><?php echo $_SESSION['name']; ?></a></li>
             <li><a href="Login/logout.php" class="logout">Logout</a></li>
           <?php else: ?>
-            <li><a href="index.php">User</a></li>
+            <!-- If user is not logged in, show "User" and login -->
+            <li><a href="index.php" class="active">User</a></li>
             <li><a href="Login/login.php">Login</a></li>
           <?php endif; ?>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -77,31 +82,111 @@ include "connection.php";
 
       <div class="container">
         <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are a team of talented designers making websites with Bootstrap</p>
+        <p data-aos="fade-up" data-aos-delay="200">We are a team of talented designers making websites with Bootstrap
+        </p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
           <a href="Project/courses.html" class="btn-get-started">Get Started</a>
         </div>
       </div>
-    </section>
-    <!-- /Hero Section -->
+
+    </section><!-- /Hero Section -->
 
     <!-- Courses Section -->
     <section id="courses" class="courses section">
+
+      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Courses</h2>
         <p>Popular Courses</p>
-      </div>
+      </div><!-- End Section Title -->
 
       <div class="container">
+
         <div class="row">
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+
+          </div> <!-- End Course Item-->
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div> <!-- End Course Item-->
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
+            data-aos-delay="300">
+            <div class="course-item">
+              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
+              <div class="course-content">
+                <h3><a href="Project/course-details.html">Copywriting</a></h3>
+                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
+                  dolores dolorem tempore.</p>
+              </div>
+            </div>
+          </div>
+
           <?php
+          // Fetch courses from the database
           $sql = "SELECT title, description, img, link FROM courses";
           $result = $conn->query($sql);
 
+          // Check if there are any courses in the database
           if ($result->num_rows > 0) {
+            // Output data of each course
             while ($row = $result->fetch_assoc()) {
           ?>
-              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
+              <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
                 <div class="course-item">
                   <img src="<?php echo $row['img']; ?>" class="img-fluid" alt="...">
                   <div class="course-content">
@@ -113,29 +198,38 @@ include "connection.php";
           <?php
             }
           } else {
-            echo "<p>No courses available.</p>";
+            echo "No courses available.";
           }
 
           $conn->close();
           ?>
+          <!-- End Course Item-->
+
+          <!-- Add more courses here if needed -->
+
         </div>
+
       </div>
+
     </section>
     <!-- /Courses Section -->
 
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
-    <div class="container text-center mt-4">
-      <p>© <strong class="sitename">PHP-PROJECT</strong> All Rights Reserved</p>
-      <div class="credits">Designed by Group 09</div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">PHP-PROJECT</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        Designed by Group 09
+      </div>
     </div>
+
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
