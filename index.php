@@ -100,79 +100,6 @@ include "connection.php";
       <div class="container">
 
         <div class="row">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-
-          </div> <!-- End Course Item-->
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in"
-            data-aos-delay="300">
-            <div class="course-item">
-              <img src="Project/assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <h3><a href="Project/course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae
-                  dolores dolorem tempore.</p>
-              </div>
-            </div>
-          </div>
-
           <?php
           // Fetch courses from the database
           $sql = "SELECT title, description, img, link FROM courses";
@@ -201,9 +128,7 @@ include "connection.php";
           $conn->close();
           ?>
           <!-- End Course Item-->
-
-          <!-- Add more courses here if needed -->
-
+        
         </div>
 
       </div>
