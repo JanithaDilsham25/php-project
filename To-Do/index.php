@@ -98,54 +98,48 @@ $result = $stmt->get_result();
                 </div>
             </nav>
         </div><!-- End Page Title -->
-    </div>
 
     </main>
 
     <div class="todo-container">
-            <h1>To-Do List</h1>
+        <h1>To-Do List</h1>
 
-            <!-- Form to add a new task -->
-            <form method="POST" action="todo.php" class="todo-form">
-                <input type="text" name="task" placeholder="Add a new task" class="todo-input" required>
-                <button type="submit" name="todoi" class="todo-btn">Add Task</button>
-            </form>
+        <!-- Form to add a new task -->
+        <form method="POST" action="todo.php" class="todo-form">
+            <input type="text" name="task" placeholder="Add a new task" class="todo-input" required>
+            <button type="submit" name="todoi" class="todo-btn">Add Task</button>
+        </form>
 
-            <h2>Task List</h2>
-            <ul class="todo-list">
-                <?php
-                // Display tasks from the database
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<li class="todo-item">';
-                        echo '<span>' . htmlspecialchars($row['task']) . ' (' . $row['mark'] . ')</span>';
+        <h2>Task List</h2>
+        <ul class="todo-list">
+            <?php
+            // Display tasks from the database
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo '<li class="todo-item">';
+                    echo '<span>' . htmlspecialchars($row['task']) . ' (' . $row['mark'] . ')</span>';
 
-                        echo '<form method="POST" action="todo.php" style="display:inline;">
-                                <input type="hidden" name="task_id" value="' . $row['todo_id'] . '">
-                                <button type="submit" name="delete_task" class="remove-btn">Delete</button>
-                            </form>';
-                        echo '</li>';
-                    }
-                } else {
-                    echo '<li>No tasks available</li>';
+                    echo '<form method="POST" action="todo.php" style="display:inline;">
+                            <input type="hidden" name="task_id" value="' . $row['todo_id'] . '">
+                            <button type="submit" name="delete_task" class="remove-btn">Delete</button>
+                        </form>';
+                    echo '</li>';
                 }
-                ?>
-            </ul>
-        </div>
+            } else {
+                echo '<li>No tasks available</li>';
+            }
+            ?>
+        </ul>
+    </div>
 
     <footer id="footer" class="footer position-relative light-background">
-
         <div class="container copyright text-center mt-4">
             <p>© <span>Copyright</span> <strong class="px-1 sitename">PHP-PROJECT</strong> <span>All Rights Reserved</span></p>
             <div class="credits">
                 Designed by Group 09
             </div>
         </div>
-
-
-
     </footer>
-
 
     <!-- Scroll Top -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
