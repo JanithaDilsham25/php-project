@@ -86,14 +86,14 @@
 
         <div class="row">
           <div class="col-lg-8">
-            <img src="assets/img/course-details.jpg" class="img-fluid" alt="">
-            <h3>Write your first C# code</h3>
-            <h4>Offered by: Microsoft in collaboration with freeCodeCamp</h4>
+            <img id ="course_image" src="assets/img/course-details.jpg" class="img-fluid" alt="">
+            <h3 id="course_title">Write your first C# code</h3>
+            <h4 id="course_org">Offered by: Microsoft in collaboration with freeCodeCamp</h4>
             
               
-              <p>Platform: Microsoft Learn and freeCodeCamp.org</p>
-              <p>Are you curious about programming with C# but not sure where to begin? "Write Your First C# Code" is a beginner-friendly, completely free course created by Microsoft and freeCodeCamp to help you take your very first steps into the world of C# programming.</p>
-              <p>This course introduces you to the fundamentals of C#, a powerful and versatile programming language used in desktop apps, web development, game development (with Unity), and more. You don’t need any prior coding experience to start—this course is perfect for beginners.</p>
+              <p id="course_platform">Platform: Microsoft Learn and freeCodeCamp.org</p>
+              <p id ="course_decp1">Are you curious about programming with C# but not sure where to begin? "Write Your First C# Code" is a beginner-friendly, completely free course created by Microsoft and freeCodeCamp to help you take your very first steps into the world of C# programming.</p>
+              <p id="course_decp2">This course introduces you to the fundamentals of C#, a powerful and versatile programming language used in desktop apps, web development, game development (with Unity), and more. You don’t need any prior coding experience to start—this course is perfect for beginners.</p>
             
           </div>
           <div class="col-lg-4">
@@ -248,6 +248,28 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <!--course data js-->
+  <script src="course_data.js"></script>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const courseId = params.get("id");
+    const course = courseData[courseId];
+    if (!course) {
+    document.querySelector("main").innerHTML = "<div class='container'><h2>Course not found.</h2></div>";
+  } else {
+    document.getElementById("course_title").innerText = course.title;
+    document.getElementById("course_org").innerText = course.org;
+    document.getElementById("course_platform").innerText = course.platform;
+    document.getElementById("course_image").src = course.image;
+    document.getElementById("course_decp1").innerText = course.description[0];
+    document.getElementById("course_decp2").innerText = course.description[1];
+    
+
+    
+  }
+
+
+  </script>
 
 </body>
 
