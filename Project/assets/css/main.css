@@ -1887,3 +1887,20 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+/* Ensures equal height for team member cards */
+.team .team-member {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.team .card-body {
+  flex-grow: 1;
+}
+
+/* Optional: Add hover effect to cards */
+.team .team-member:hover {
+  transform: translateY(-10px);
+  transition: transform 0.3s ease-in-out;
+}
