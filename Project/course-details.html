@@ -213,9 +213,16 @@
           </div>
         </div>
 
+      <div class="ms-5">
+        <button id="loadNotesBtn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#notesModal">
+          <i class="bi bi-journal-bookmark-fill me-2"></i>Resources
+        </button>
+      </div>
+
       </div>
 
     </section><!-- /Tabs Section -->
+    
 
   </main>
 
@@ -265,8 +272,47 @@
     
   }
 
+  //Load Notes into Modal when button is clicked
+  document.addEventListener("DOMContentLoaded", () => {
+      const loadBtn = document.getElementById("loadNotesBtn");
+      if (loadBtn) {
+        loadBtn.addEventListener("click", () => {
+          const notesList = document.getElementById("notesList");
+          notesList.innerHTML = "<p>Loading notes...</p>"; // reset
+
+          fetch(`load-notes.php?id=${courseId}`)
+            .then(response => {
+              if (!response.ok) throw new Error("Network error");
+              return response.text();
+            })
+            .then(data => {
+              notesList.innerHTML = data;
+            })
+            .catch(() => {
+              notesList.innerHTML = "<p>Error loading notes.</p>";
+            });
+        });
+      }
+    });
+
 
   </script>
+
+  
+  // bootstrap Note Model
+  <div class="modal fade" id="notesModal" tabindex="-1" aria-labelledby="notesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="notesModalLabel">Course Notes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="notesList">
+          <p>Loading notes...</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 
