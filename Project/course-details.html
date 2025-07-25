@@ -91,7 +91,7 @@
               <p id="course_platform">Platform: Microsoft Learn and freeCodeCamp.org</p>
               <p id ="course_decp1">Are you curious about programming with C# but not sure where to begin? "Write Your First C# Code" is a beginner-friendly, completely free course created by Microsoft and freeCodeCamp to help you take your very first steps into the world of C# programming.</p>
               <p id="course_decp2">This course introduces you to the fundamentals of C#, a powerful and versatile programming language used in desktop apps, web development, game development (with Unity), and more. You don’t need any prior coding experience to start—this course is perfect for beginners.</p>
-            
+              <a id="course_link" href="#" target="_blank" class="btn btn-primary mt-3">Enroll Now</a>
           </div>
           <div class="col-lg-4">
 
@@ -260,6 +260,8 @@
     document.getElementById("course_image").src = course.image;
     document.getElementById("course_decp1").innerText = course.description[0];
     document.getElementById("course_decp2").innerText = course.description[1];
+    document.getElementById("course_link").href = course.link;
+
     
 
     
