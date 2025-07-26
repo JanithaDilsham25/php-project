@@ -35,7 +35,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
     // Execute the query
     if ($stmt->execute()) {
-        // Data inserted successfully, send email notification using Mailer to Go SMTP
+        // Data inserted successfully, send email notification using Gmail SMTP
 
         // Create a new PHPMailer instance
         $mail = new PHPMailer(true);
@@ -54,14 +54,33 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
+            // Set the "From" email (Gmail address)
             $mail->setFrom('janithadilsham@gmail.com', 'Test Sender');
-            $mail->addAddress('janitha1717@gmail.com', 'Test User');  // Send to any email
-            $mail->Subject = 'Test Email via Gmail';
-            $mail->Body    = 'This is a test email sent via Gmail SMTP.';
+            $mail->addAddress('janitha1717@gmail.com', 'Test User');  // Recipient email
+
+            // Subject and email body content
+            $mail->Subject = 'New Message from Contact Form';
+            
+            // The body of the email with form details
+            $mail->Body = "
+            <html>
+                <head>
+                    <title>New Message from Contact Form</title>
+                </head>
+                <body>
+                    <h2>Contact Form Submission</h2>
+                    <p><strong>Name:</strong> $name</p>
+                    <p><strong>Email:</strong> $email</p>
+                    <p><strong>Subject:</strong> $subject</p>
+                    <p><strong>Message:</strong></p>
+                    <p>$message</p>
+                </body>
+            </html>
+            ";
 
             // Send the email
             $mail->send();
-            echo 'Message has been sent';
+            echo 'Message has been sent successfully';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
@@ -83,3 +102,4 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
+?>
