@@ -15,7 +15,8 @@ use PHPMailer\PHPMailer\Exception;
 require __DIR__ . '../../../vendor/autoload.php'; // Adjust relative path
 
 // Function to sanitize input data
-function validate($data) {
+function validate($data)
+{
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
@@ -46,20 +47,17 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
             // SMTP settings
             $mail->isSMTP();
-            $mail->Host = getenv('MAILERTOGO_SMTP_HOST');  // Mailer to Go SMTP server (smtp.us-west-1.mailertogo.net)
+            $mail->Host = 'smtp.gmail.com';  // Gmail's SMTP server
             $mail->SMTPAuth = true;
-            $mail->Username = getenv('MAILERTOGO_SMTP_USER');  // Your Mailer to Go SMTP username
-            $mail->Password = getenv('MAILERTOGO_SMTP_PASSWORD');  // Your Mailer to Go SMTP password
+            $mail->Username = 'arachchi12911@usci.ruh.ac.lk';  // Your Gmail address
+            $mail->Password = 'Password2025@';  // Your Gmail password or app-specific password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;  // Port for Mailer to Go (587 for TLS)
+            $mail->Port = 587;
 
-            // Set the "From" email (Mailer to Go generated email address)
-            $mail->setFrom('postmaster@php-project.mailertogo.com', 'Website Contact Form');
-            $mail->addAddress('janitha1717@gmail.com', 'Janitha Dilsham');  // Recipient email
-
-            // Email content
-            $mail->Subject = 'New Message from Contact Form';
-            $mail->Body    = "Name: $name <br>Email: $email <br>Subject: $subject <br>Message: $message";
+            $mail->setFrom('arachchi12911@usci.ruh.ac.lk', 'Test Sender');
+            $mail->addAddress('janitha1717@gmail.com.com', 'Test User');  // Send to any email
+            $mail->Subject = 'Test Email via Gmail';
+            $mail->Body    = 'This is a test email sent via Gmail SMTP.';
 
             // Send the email
             $mail->send();
@@ -67,7 +65,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
-
     } else {
         $_SESSION['form_status'] = 'error';
         $_SESSION['error_message'] = 'Failed to submit the form. Please try again later.';
@@ -86,4 +83,3 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
-?>
