@@ -1,20 +1,21 @@
 {
   "responses": [
     {
-      "keywords": ["hello", "hi", "hey", "greetings"],
+      "keywords": ["hello", "hi", "hey", "greetings", "welcome", "good day", "howdy", "what's up", "hi there", "hey there", "good morning", "good afternoon", "good evening", "good night", "salutations"],
       "response": "Hello! How can I help you today?"
     },
     {
-      "keywords": ["how are you", "how do you do", "what's up"],
+      "keywords": ["how are you", "how do you do", "what's up", "how's it going", "how's everything", "how's life", "how are things"],
       "response": "I'm doing great! Thanks for asking. How can I assist you?"
     },
     {
-      "keywords": ["help", "support", "assistance"],
+      "keywords": ["help", "support", "assistance", "aid", "guide", "need help", "need assistance", "can you help"],
       "response": "I'm here to help! Please let me know what you need assistance with."
     },
     {
-      "keywords": ["courses", "course", "class", "classes"],
-      "response": "We offer various courses including web development, programming, and design. Would you like to know more about any specific course?"
+      "keywords": ["courses", "course", "class", "classes", "program", "programs", "learning", "education", "training"],
+      "response": "We offer various courses including web development, programming, and design. Would you like to know more about any specific course? ",
+      "link": "https://example.com/courses/"
     },
     {
       "keywords": ["contact", "phone", "email", "reach"],
@@ -29,7 +30,7 @@
       "response": "Our course prices vary depending on the program. Please check our courses page for detailed pricing information."
     },
     {
-      "keywords": ["thank you", "thanks", "appreciate"],
+      "keywords": ["thank you", "thanks", "appreciate", "grateful", "thanks a lot", "thank you very much"],
       "response": "You're very welcome! Is there anything else I can help you with?"
     },
     {
@@ -83,7 +84,16 @@
     {
       "keywords": ["dark mode", "light mode", "theme"],
       "response": "You can switch between dark mode and light mode in the settings. Choose the theme that suits you best!"
+    },
+    {
+      "keywords": ["search", "find", "locate"],
+      "response": "Use the search feature to quickly find courses, resources, or information on our platform."
+    },
+    {
+      "keywords": ["login issues", "forgot password", "reset password"],
+      "response": "If you're having trouble logging in, you can reset your password using the 'Forgot Password' link on the login page."
     }
+
   ],
   "defaultResponse": "I'm sorry, I didn't quite understand that. Could you please rephrase your question or ask about our courses, contact information, or how I can help you?"
 }

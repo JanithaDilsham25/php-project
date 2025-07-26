@@ -70,17 +70,17 @@ function executeChatBot(userInput) {
             if (this.readyState === 4 && this.status === 200) {
                 try {
                     var data = JSON.parse(this.responseText);
-                    var botResponse = findBestResponse(userInput.toLowerCase(), data);
-                    displayBotResponse(botResponse);
+                    var _a = findBestResponse(userInput.toLowerCase(), data), botResponse = _a[0], link = _a[1];
+                    displayBotResponse(botResponse, link);
                 }
                 catch (error) {
                     console.error('Error parsing JSON:', error);
-                    displayBotResponse("Sorry, I'm having trouble processing your request right now.");
+                    displayBotResponse("Sorry, I'm having trouble processing your request right now.", '');
                 }
             }
             else if (this.readyState === 4) {
                 console.error('Error loading responses:', this.status);
-                displayBotResponse("Sorry, I'm having trouble connecting right now. Please try again later.");
+                displayBotResponse("Sorry, I'm having trouble connecting right now. Please try again later.", '');
             }
         };
         xhttp.open("GET", "./data/responses.json", true);
@@ -94,7 +94,7 @@ function findBestResponse(userInput, data) {
     var responses = data.responses;
     if (!responses || !Array.isArray(responses)) {
         console.error('Invalid responses data format');
-        return "I'm sorry, I didn't understand that. How can I help you?";
+        return ["I'm sorry, I didn't understand that. How can I help you?", ''];
     }
     var normalizedInput = userInput.toLowerCase().trim();
     // Try to find a matching response based on keywords
@@ -103,22 +103,41 @@ function findBestResponse(userInput, data) {
         for (var _a = 0, _b = responseObj.keywords; _a < _b.length; _a++) {
             var keyword = _b[_a];
             if (normalizedInput.indexOf(keyword.toLowerCase()) !== -1) {
-                return responseObj.response;
+                if (responseObj.link && typeof responseObj.link === 'string') {
+                    return [responseObj.response, responseObj.link];
+                }
+                return [responseObj.response, ''];
             }
         }
     }
-    return data.defaultResponse || "I'm sorry, I didn't understand that. How can I help you?";
+    // If no keyword matches, return the default response
+    if (normalizedInput.indexOf("clear") !== -1) {
+        var chatBody = document.querySelector('.chat-body #mydiv');
+        if (chatBody) {
+            chatBody.innerHTML = ''; // Clear the chat body
+        }
+        return ["Chat cleared. How can I assist you further?", ''];
+    }
+    if (data.defaultResponse && typeof data.defaultResponse === 'string') {
+        return [data.defaultResponse, ''];
+    }
+    return ["I'm sorry, I didn't understand that. How can I help you?", ''];
 }
-function displayBotResponse(response) {
+function displayBotResponse(response, link) {
     var chatBody = document.querySelector('.chat-body #mydiv');
     if (chatBody) {
         setTimeout(function () {
             var botMessageElement = document.createElement('p');
-            botMessageElement.className = 'p-3 bg-blue-500 my-2 rounded-r-md rounded-tl-md text-white max-w-xs break-words ml-auto'; // Bot message styling
-            botMessageElement.textContent = response;
+            botMessageElement.className = 'p-3 bg-green-500 my-2 rounded-r-md rounded-tl-md text-white max-w-xs break-words ml-auto'; // Bot message styling
+            if (link.trim() !== '') {
+                link = "<a href=\"".concat(link, "\" target=\"_blank\" class=\"text-blue-300 underline\">").concat(link, "</a>");
+                response += link; // Append the link to the response
+            }
+            // Set the bot message text
+            botMessageElement.innerHTML = response;
             chatBody.appendChild(botMessageElement);
             scrollToBottom();
-        }, 1000); // 500ms delay for more natural feel
+        }, 1000);
     }
 }
 function scrollToBottom() {

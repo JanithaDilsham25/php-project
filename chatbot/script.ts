@@ -73,15 +73,15 @@ function executeChatBot(userInput: string): void {
             if (this.readyState === 4 && this.status === 200) {
                 try {
                     const data = JSON.parse(this.responseText);
-                    const botResponse = findBestResponse(userInput.toLowerCase(), data);
-                    displayBotResponse(botResponse);
+                    const [botResponse, link] = findBestResponse(userInput.toLowerCase(), data);
+                    displayBotResponse(botResponse, link);
                 } catch (error) {
                     console.error('Error parsing JSON:', error);
-                    displayBotResponse("Sorry, I'm having trouble processing your request right now.");
+                    displayBotResponse("Sorry, I'm having trouble processing your request right now.", '');
                 }
             } else if (this.readyState === 4) {
                 console.error('Error loading responses:', this.status);
-                displayBotResponse("Sorry, I'm having trouble connecting right now. Please try again later.");
+                displayBotResponse("Sorry, I'm having trouble connecting right now. Please try again later.", '');
             }
         };
         
@@ -92,12 +92,12 @@ function executeChatBot(userInput: string): void {
     }
 }
 
-function findBestResponse(userInput: string, data: any): string {
+function findBestResponse(userInput: string, data: any): any[] {
     const responses = data.responses;
     
     if (!responses || !Array.isArray(responses)) {
         console.error('Invalid responses data format');
-        return "I'm sorry, I didn't understand that. How can I help you?";
+        return ["I'm sorry, I didn't understand that. How can I help you?", ''];
     }
     
     const normalizedInput = userInput.toLowerCase().trim();
@@ -106,28 +106,47 @@ function findBestResponse(userInput: string, data: any): string {
     for (const responseObj of responses) {
         for (const keyword of responseObj.keywords) {
             if (normalizedInput.indexOf(keyword.toLowerCase()) !== -1) {
-                return responseObj.response;
+                if(responseObj.link && typeof responseObj.link === 'string') {
+                    return [responseObj.response, responseObj.link];
+                }
+                return [responseObj.response, ''];
             }
         }
     }
-    
+    // If no keyword matches, return the default response
+    if(normalizedInput.indexOf("clear") !== -1) {
+        const chatBody: HTMLElement | null = document.querySelector('.chat-body #mydiv');
+        if (chatBody) {
+            chatBody.innerHTML = ''; // Clear the chat body
+        }
+        return ["Chat cleared. How can I assist you further?", ''];
+    }
 
-    return data.defaultResponse || "I'm sorry, I didn't understand that. How can I help you?";
+    if (data.defaultResponse && typeof data.defaultResponse === 'string') {
+        return [data.defaultResponse, ''];
+    }
+
+    return ["I'm sorry, I didn't understand that. How can I help you?", ''];
 }
 
-function displayBotResponse(response: string): void {
+function displayBotResponse(response: string, link: string): void {
     const chatBody: HTMLElement | null = document.querySelector('.chat-body #mydiv');
     if (chatBody) {
         
         setTimeout(() => {
             const botMessageElement: HTMLParagraphElement = document.createElement('p');
-            botMessageElement.className = 'p-3 bg-blue-500 my-2 rounded-r-md rounded-tl-md text-white max-w-xs break-words ml-auto'; // Bot message styling
-            botMessageElement.textContent = response;
+            botMessageElement.className = 'p-3 bg-green-500 my-2 rounded-r-md rounded-tl-md text-white max-w-xs break-words ml-auto'; // Bot message styling
+            if(link.trim() !== '') {
+                link = `<a href="${link}" target="_blank" class="text-blue-300 underline">${link}</a>`;
+                response += link; // Append the link to the response
+            }
+            // Set the bot message text
+            botMessageElement.innerHTML = response;
             chatBody.appendChild(botMessageElement);
             
             
             scrollToBottom();
-        }, 1000); // 500ms delay for more natural feel
+        }, 1000);
     }
 }
 
