@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Adjust the path to the autoload file
-require __DIR__ . '../../../vendor/autoload.php'; // Adjust relative path
+require "../php-project/vendor/autoload.php"; // Adjust relative path
 
 // Function to sanitize input data
 function validate($data) {
