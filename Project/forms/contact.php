@@ -50,7 +50,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
             // Recipients
             $mail->setFrom('postmaster@php-project.mailertogo.com', 'Website Contact Form');  // Sender email
-            $mail->addAddress('your-email@example.com', 'Your Name');  // Recipient email (you)
+            $mail->addAddress('janithadilsham@gmail.com', 'Janitha Dilsham');  // Recipient email (you)
 
             // Content
             $mail->isHTML(true);  // Set email format to HTML
