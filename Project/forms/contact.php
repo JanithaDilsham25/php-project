@@ -42,8 +42,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
         try {
             // Enable SMTP debugging
-            $mail->SMTPDebug = 2; // Enables detailed SMTP debug output
-            $mail->Debugoutput = 'html'; // Output in HTML format for better readability
+            //$mail->SMTPDebug = 2; // Enables detailed SMTP debug output
+            //$mail->Debugoutput = 'html'; // Output in HTML format for better readability
 
             // SMTP settings
             $mail->isSMTP();
@@ -55,28 +55,27 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
             $mail->Port = 587;
 
             // Set the "From" email (Gmail address)
-            $mail->setFrom('janithadilsham@gmail.com', 'Test Sender');
-            $mail->addAddress('janitha1717@gmail.com', 'Test User');  // Recipient email
+            $mail->setFrom('janithadilsham@gmail.com', $name);
+            $mail->addAddress('janitha1717@gmail.com', 'Janitha Dilsham');  // Recipient email
 
             // Subject and email body content
             $mail->Subject = 'New Message from Contact Form';
-            
+
             // The body of the email with form details
-            $mail->Body = "
-            <html>
+            $mail->Body = "<html>
                 <head>
                     <title>New Message from Contact Form</title>
                 </head>
                 <body>
                     <h2>Contact Form Submission</h2>
-                    <p><strong>Name:</strong> $name</p>
-                    <p><strong>Email:</strong> $email</p>
-                    <p><strong>Subject:</strong> $subject</p>
+                    <p><strong>Name:</strong> " . $name . "</p>
+                    <p><strong>Email:</strong> " . $email . "</p>
+                    <p><strong>Subject:</strong> " . $subject . "</p>
                     <p><strong>Message:</strong></p>
-                    <p>$message</p>
+                    <p>" . $message . "</p>
                 </body>
-            </html>
-            ";
+            </html>";
+
 
             // Send the email
             $mail->send();
@@ -102,4 +101,3 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
-?>
