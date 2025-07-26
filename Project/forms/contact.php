@@ -61,15 +61,24 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
             // Subject and email body content
             $mail->Subject = 'New Message from Contact Form';
 
-            // The body of the email with form details
-            $altBody = "Contact Form Submission\n\n";
-            $altBody .= "Name: " . $name . "\n";
-            $altBody .= "Email: " . $email . "\n";
-            $altBody .= "Subject: " . $subject . "\n";
-            $altBody .= "Message:\n" . $message;
+            // Set the email format to HTML
+            $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';  // Set character encoding for the email
 
-            // Set the plain text version (AltBody)
-            $mail->AltBody = $altBody;
+            // HTML body content
+            $mail->Body = "<html>
+                <head>
+                    <title>New Message from Contact Form</title>
+                </head>
+                <body>
+                    <h2>Contact Form Submission</h2>
+                    <p><strong>Name:</strong> " . $name . "</p>
+                    <p><strong>Email:</strong> " . $email . "</p>
+                    <p><strong>Subject:</strong> " . $subject . "</p>
+                    <p><strong>Message:</strong></p>
+                    <p>" . nl2br($message) . "</p>  <!-- nl2br converts newlines to <br> -->
+                </body>
+            </html>";
 
 
             // Send the email
