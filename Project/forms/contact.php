@@ -5,14 +5,13 @@ error_reporting(E_ALL);
 
 // Start session (needed for session variables)
 session_start();
-include "../../connection.php";
 
 // Include PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Adjust the path to the autoload file
-require '../../vendor/autoload.php'; // Adjust relative path
+require __DIR__ . '../../../vendor/autoload.php'; // Adjust relative path
 
 // Function to sanitize input data
 function validate($data) {
@@ -40,38 +39,32 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
         $mail = new PHPMailer(true);
 
         try {
-            // Server settings
-            $mail->isSMTP();  // Set mailer to use SMTP
+            // Enable SMTP debugging
+            $mail->SMTPDebug = 2; // Enables detailed SMTP debug output
+            $mail->Debugoutput = 'html'; // Output in HTML format for better readability
+
+            // SMTP settings
+            $mail->isSMTP();
             $mail->Host = getenv('MAILERTOGO_SMTP_HOST');  // Mailer to Go SMTP server (smtp.us-west-1.mailertogo.net)
-            $mail->SMTPAuth = true;  // Enable SMTP authentication
+            $mail->SMTPAuth = true;
             $mail->Username = getenv('MAILERTOGO_SMTP_USER');  // Your Mailer to Go SMTP username
             $mail->Password = getenv('MAILERTOGO_SMTP_PASSWORD');  // Your Mailer to Go SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption
-            $mail->Port = getenv('MAILERTOGO_SMTP_PORT');  // Port for Mailer to Go (587 for TLS)
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;  // Port for Mailer to Go (587 for TLS)
 
-            // Recipients
-            $mail->setFrom('postmaster@php-project.mailertogo.com', 'Website Contact Form');  // Sender email
-            $mail->addAddress('janithadilsham@gmail.com', 'Janitha Dilsham');  // Recipient email (you)
+            // Set the "From" email (Mailer to Go generated email address)
+            $mail->setFrom('postmaster@php-project.mailertogo.com', 'Website Contact Form');
+            $mail->addAddress('janitha1717@gmail.com', 'Janitha Dilsham');  // Recipient email
 
-            // Content
-            $mail->isHTML(true);  // Set email format to HTML
+            // Email content
             $mail->Subject = 'New Message from Contact Form';
-            $mail->Body    = "<strong>Name:</strong> $name <br><strong>Email:</strong> $email <br><strong>Subject:</strong> $subject <br><strong>Message:</strong> $message";
+            $mail->Body    = "Name: $name <br>Email: $email <br>Subject: $subject <br>Message: $message";
 
-            // Send email
+            // Send the email
             $mail->send();
-
-            // Data inserted successfully, redirect with success message
-            $_SESSION['form_status'] = 'success';
-            $_SESSION['success_message'] = 'Your message has been successfully submitted!';
-            header("Location: ../contact.html");
-            exit();
+            echo 'Message has been sent';
         } catch (Exception $e) {
-            // If email fails to send, store error message
-            $_SESSION['form_status'] = 'error';
-            $_SESSION['error_message'] = 'Failed to send the email. Error: ' . $mail->ErrorInfo;
-            header("Location: ../contact.html");
-            exit();
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
 
     } else {
