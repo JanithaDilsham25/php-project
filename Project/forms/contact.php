@@ -80,10 +80,14 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
                 </body>
             </html>";
 
-
             // Send the email
             $mail->send();
-            echo 'Message has been sent successfully';
+
+            // Set success message and redirect
+            echo '<script type="text/javascript">
+                    alert("Message has been sent successfully.");
+                    window.location.href = "../contact.html"; // Adjust the page URL if needed
+                </script>';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
