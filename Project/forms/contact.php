@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 // Start session (needed for session variables)
 session_start();
+require "../../connection.php";
 
 // Include PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
