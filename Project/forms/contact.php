@@ -62,19 +62,14 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
             $mail->Subject = 'New Message from Contact Form';
 
             // The body of the email with form details
-            $mail->Body = "<html>
-                <head>
-                    <title>New Message from Contact Form</title>
-                </head>
-                <body>
-                    <h2>Contact Form Submission</h2>
-                    <p><strong>Name:</strong> " . $name . "</p>
-                    <p><strong>Email:</strong> " . $email . "</p>
-                    <p><strong>Subject:</strong> " . $subject . "</p>
-                    <p><strong>Message:</strong></p>
-                    <p>" . $message . "</p>
-                </body>
-            </html>";
+            $altBody = "Contact Form Submission\n\n";
+            $altBody .= "Name: " . $name . "\n";
+            $altBody .= "Email: " . $email . "\n";
+            $altBody .= "Subject: " . $subject . "\n";
+            $altBody .= "Message:\n" . $message;
+
+            // Set the plain text version (AltBody)
+            $mail->AltBody = $altBody;
 
 
             // Send the email
