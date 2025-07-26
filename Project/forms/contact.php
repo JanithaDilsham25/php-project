@@ -54,7 +54,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('arachchi12911@usci.ruh.ac.lk', 'Test Sender');
+            $mail->setFrom('janithadilsham@gmail.com', 'Test Sender');
             $mail->addAddress('janitha1717@gmail.com.com', 'Test User');  // Send to any email
             $mail->Subject = 'Test Email via Gmail';
             $mail->Body    = 'This is a test email sent via Gmail SMTP.';
