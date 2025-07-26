@@ -49,8 +49,8 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';  // Gmail's SMTP server
             $mail->SMTPAuth = true;
-            $mail->Username = 'arachchi12911@usci.ruh.ac.lk';  // Your Gmail address
-            $mail->Password = 'Password2025@';  // Your Gmail password or app-specific password
+            $mail->Username = 'janithadilsham@gmail.com';  // Your Gmail address
+            $mail->Password = 'ptdazwhvnkfmuzli';  // Your Gmail password or app-specific password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
