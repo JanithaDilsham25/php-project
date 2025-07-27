@@ -1,22 +1,22 @@
 <?php
-
-require '../../vendor/autoload.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
 // Enable error reporting for debugging (optional)
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Start session (needed for session variables)
 session_start();
+require "../../connection.php";
 
-// Include database connection
-include "../../connection.php";
+// Include PHPMailer
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Adjust the path to the autoload file
+require __DIR__ . '../../../vendor/autoload.php'; // Adjust relative path
 
 // Function to sanitize input data
-function validate($data) {
+function validate($data)
+{
     return htmlspecialchars(stripslashes(trim($data)));
 }
 
@@ -35,53 +35,63 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
     // Execute the query
     if ($stmt->execute()) {
+        // Data inserted successfully, send email notification using Gmail SMTP
+
+        // Create a new PHPMailer instance
+        $mail = new PHPMailer(true);
 
         try {
-            // Get Mailgun credentials from Heroku environment variables
-            $mailgun_domain = getenv('MAILGUN_DOMAIN');  // Mailgun domain (e.g., sandbox123.mailgun.org)
-            $mailgun_api_key = getenv('MAILGUN_API_KEY');  // Mailgun API key
+            // Enable SMTP debugging
+            //$mail->SMTPDebug = 2; // Enables detailed SMTP debug output
+            //$mail->Debugoutput = 'html'; // Output in HTML format for better readability
 
-            // Mailgun SMTP settings
-            $smtp_host = 'smtp.mailgun.org';
-            $smtp_port = 587;
+            // SMTP settings
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';  // Gmail's SMTP server
+            $mail->SMTPAuth = true;
+            $mail->Username = 'janithadilsham@gmail.com';  // Your Gmail address
+            $mail->Password = 'ptdazwhvnkfmuzli';  // Your Gmail password or app-specific password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
-            // Create the PHPMailer instance
-            $mail = new PHPMailer(true);
-            $mail->isSMTP();  // Set mailer to use SMTP
-            $mail->Host = $smtp_host;  // Set Mailgun's SMTP server
-            $mail->SMTPAuth = true;  // Enable SMTP authentication
-            $mail->Username = 'postmaster@' . $mailgun_domain;  // Mailgun SMTP username (postmaster@domain)
-            $mail->Password = $mailgun_api_key;  // Mailgun SMTP API key
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;  // Enable TLS encryption
-            $mail->Port = $smtp_port;  // Set the SMTP port (587 for TLS)
+            // Set the "From" email (Gmail address)
+            $mail->setFrom('janithadilsham@gmail.com', $name);
+            $mail->addAddress('janitha1717@gmail.com', 'Janitha Dilsham');  // Recipient email
 
-            // Recipients
-            $mail->setFrom($email, $name);  // Sender's email
-            $mail->addAddress('janithadilsham@gmail.com', 'Janitha Dilsham');  // Your email address
+            // Subject and email body content
+            $mail->Subject = 'New Message from Contact Form';
 
-            // Content
-            $mail->isHTML(true);  // Set email format to HTML
-            $mail->Subject = "New Contact Form Submission: $subject";
-            $mail->Body    = "You have received a new message from your website contact form.<br><br>".
-                            "Name: $name<br>Email: $email<br>Subject: $subject<br>Message:<br>$message";
+            // Set the email format to HTML
+            $mail->isHTML(true);
+            $mail->CharSet = 'UTF-8';  // Set character encoding for the email
+
+            // HTML body content
+            $mail->Body = "<html>
+                <head>
+                    <title>New Message from Contact Form</title>
+                </head>
+                <body>
+                    <h2>Contact Form Submission</h2>
+                    <p><strong>Name:</strong> " . $name . "</p>
+                    <p><strong>Email:</strong> " . $email . "</p>
+                    <p><strong>Subject:</strong> " . $subject . "</p>
+                    <p><strong>Message:</strong></p>
+                    <p>" . nl2br($message) . "</p>  <!-- nl2br converts newlines to <br> -->
+                </body>
+            </html>";
 
             // Send the email
             $mail->send();
 
-            // Data inserted successfully, redirect with success message
-            $_SESSION['form_status'] = 'success';
-            $_SESSION['success_message'] = 'Your message has been successfully submitted!';
-            header("Location: ../contact.html");
-            exit();
+            // Set success message and redirect
+            echo '<script type="text/javascript">
+                    alert("Message has been sent successfully.");
+                    window.location.href = "../contact.html"; // Adjust the page URL if needed
+                </script>';
         } catch (Exception $e) {
-            // If email sending fails, set error message
-            $_SESSION['form_status'] = 'error';
-            $_SESSION['error_message'] = 'Failed to send email. Please try again later.';
-            header("Location: ../contact.html");
-            exit();
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
     } else {
-        // If query execution fails, set error message
         $_SESSION['form_status'] = 'error';
         $_SESSION['error_message'] = 'Failed to submit the form. Please try again later.';
         header("Location: ../contact.html");
@@ -91,7 +101,6 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
     // Close the prepared statement
     $stmt->close();
 } else {
-    // If form data is not set, redirect with error message
     $_SESSION['form_status'] = 'error';
     $_SESSION['error_message'] = 'Please fill in all fields.';
     header("Location: ../contact.html");
@@ -100,4 +109,3 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject']) 
 
 // Close the database connection
 $conn->close();
-?>
