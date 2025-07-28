@@ -1,89 +1,100 @@
 {
   "responses": [
     {
-      "keywords": ["hello", "hi", "hey", "greetings"],
+      "keywords": ["hello", "hi", "hey", "greetings", "welcome", "good day", "howdy", "what's up", "hi there", "hey there", "good morning", "good afternoon", "good evening", "good night", "salutations"],
       "response": "Hello! How can I help you today?"
     },
     {
-      "keywords": ["how are you", "how do you do", "what's up"],
+      "keywords": ["how are you", "how do you do", "what's up", "how's it going", "how's everything", "how's life", "how are things"],
       "response": "I'm doing great! Thanks for asking. How can I assist you?"
     },
     {
-      "keywords": ["help", "support", "assistance"],
+      "keywords": ["help", "support", "assistance", "aid", "guide", "need help", "need assistance", "can you help"],
       "response": "I'm here to help! Please let me know what you need assistance with."
     },
     {
-      "keywords": ["courses", "course", "class", "classes"],
-      "response": "We offer various courses including web development, programming, and design. Would you like to know more about any specific course?"
+      "keywords": ["courses", "course", "class", "classes", "program", "programs", "learning", "education", "training"],
+      "response": "We offer various courses including web development, programming, and design. Would you like to know more about any specific course? ",
+      "link": "https://example.com/courses/"
     },
     {
-      "keywords": ["contact", "phone", "email", "reach"],
+      "keywords": ["contact", "phone", "email", "reach", "get in touch", "support", "customer service", "contact us"],
       "response": "You can contact us through our contact page or reach out via email. How would you prefer to get in touch?"
     },
     {
-      "keywords": ["about", "company", "who are you"],
+      "keywords": ["about", "company", "who are you", "what do you do", "information", "details"],
       "response": "We are an educational platform providing quality courses and learning resources. Learn more on our about page!"
     },
     {
-      "keywords": ["price", "cost", "fee", "payment"],
+      "keywords": ["price", "cost", "fee", "payment", "pricing", "charges", "rates"],
       "response": "Our course prices vary depending on the program. Please check our courses page for detailed pricing information."
     },
     {
-      "keywords": ["thank you", "thanks", "appreciate"],
+      "keywords": ["thank you", "thanks", "appreciate", "grateful", "thanks a lot", "thank you very much"],
       "response": "You're very welcome! Is there anything else I can help you with?"
     },
     {
-      "keywords": ["bye", "goodbye", "see you", "exit"],
+      "keywords": ["bye", "goodbye", "see you", "exit", "quit", "farewell", "take care", "later"],
       "response": "Goodbye! Have a great day and feel free to come back anytime you need help!"
     },
     {
-      "keywords": ["feedback", "suggestions", "improvements"],
+      "keywords": ["feedback", "suggestions", "improvements", "comments", "reviews"],
       "response": "We appreciate your feedback! Please let us know how we can improve or what features you would like to see."
     },
     {
-      "keywords": ["login", "sign in", "account"],
+      "keywords": ["login", "sign in", "account", "access", "authenticate", "log in"],
       "response": "You can log in to your account through our login page. If you don't have an account, you can sign up for one!"
     },
     {
-      "keywords": ["registration", "sign up", "create account"],
+      "keywords": ["registration", "sign up", "create account", "join"],
       "response": "To register, please visit our sign-up page and fill out the required information. It's quick and easy!"
     },
     {
-      "keywords": ["faq", "frequently asked questions", "common questions"],
+      "keywords": ["faq", "frequently asked questions", "common questions", "help center", "support center"],
       "response": "You can find answers to common questions on our FAQ page. If you have more specific queries, feel free to ask!"
     },
     {
-      "keywords": ["technical issues", "bugs", "errors"],
+      "keywords": ["technical issues", "bugs", "errors", "problems", "issues"],
       "response": "If you're experiencing technical issues, please describe the problem in detail so we can assist you better."
     },
     {
-      "keywords": ["updates", "news", "announcements"],
+      "keywords": ["updates", "news", "announcements", "new features", "latest news"],
       "response": "Stay tuned for our latest updates and announcements on our news page. We regularly post about new courses and features!"
     },
     {
-      "keywords": ["community", "forum", "discussion"],
+      "keywords": ["community", "forum", "discussion", "chat", "social"],
       "response": "Join our community forum to discuss topics, share ideas, and connect with other learners. We value your participation!"
     },
     {
-      "keywords": ["resources", "materials", "downloads"],
+      "keywords": ["resources", "materials", "downloads", "learning materials", "study materials", "educational resources"],
       "response": "We provide various learning resources and materials. Check out our resources page for downloadable content!"
     },
     {
-      "keywords": ["certification", "certificate", "credentials"],
+      "keywords": ["certification", "certificate", "credentials", "qualification", "accreditation"],
       "response": "Upon completing a course, you will receive a certificate of completion. This can be a valuable addition to your resume!"
     },
     {
-      "keywords": ["privacy", "data protection", "security"],
+      "keywords": ["privacy", "data protection", "security", "privacy policy", "data privacy"],
       "response": "We take your privacy seriously. Please read our privacy policy to understand how we protect your data."
     },
     {
-      "keywords": ["terms", "conditions", "policies"],
+      "keywords": ["terms", "conditions", "policies", "terms of service", "user agreement"],
       "response": "Please review our terms and conditions to understand the rules and guidelines for using our platform."
     },
     {
-      "keywords": ["dark mode", "light mode", "theme"],
+      "keywords": ["dark mode", "light mode", "theme", "appearance", "visual settings"],
       "response": "You can switch between dark mode and light mode in the settings. Choose the theme that suits you best!"
+    },
+    {
+      "keywords": ["search", "find", "locate", "look for", "search courses", "search resources"],
+      "response": "Use the search feature to quickly find courses, resources, or information on our platform."
+    },
+    {
+      "keywords": ["login issues", "forgot password", "reset password", "account recovery", "can't log in"],
+      "response": "If you're having trouble logging in, you can reset your password using the 'Forgot Password' link on the login page.",
+      "link":"https://example.com/courses/"
     }
+
   ],
   "defaultResponse": "I'm sorry, I didn't quite understand that. Could you please rephrase your question or ask about our courses, contact information, or how I can help you?"
 }
