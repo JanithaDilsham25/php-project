@@ -85,7 +85,7 @@ function executeChatBot(userInput: string): void {
             }
         };
         
-        xhttp.open("GET", "./data/responses.json", true);
+        xhttp.open("GET", "./responses.json", true);
         xhttp.send();
     } else {
         return;
