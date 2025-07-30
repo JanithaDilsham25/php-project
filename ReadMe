@@ -1,13 +1,5 @@
 Database Password: qsyxbghov9gu8ich
 
-ptda zwhv nkfm uzli
+email password: ptda zwhv nkfm uzli
 
-//email
-=== php-project Config Vars
-
-JAWSDB_URL:               mysql://gqxd5e1uu0ws6hsv:qsyxbghov9gu8ich@xefi550t7t6tjn36.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/x5f9g037rl5504pl
-MAILERTOGO_SMTP_HOST:     smtp.us-west-1.mailertogo.net
-MAILERTOGO_SMTP_PASSWORD: 26ff135d31b5cb374bc2c1022d128153f965791b763a967265c9ed0b1dc314b2
-MAILERTOGO_SMTP_PORT:     587
-MAILERTOGO_SMTP_USER:     6e909f1951fe8f07f62b6210ff4008e7
-MAILERTOGO_URL:           smtp://6e909f1951fe8f07f62b6210ff4008e7:26ff135d31b5cb374bc2c1022d128153f965791b763a967265c9ed0b1dc314b2@smtp.us-west-1.mailertogo.net:587?authentication=plain
+JAWSDB_URL: mysql://gqxd5e1uu0ws6hsv:qsyxbghov9gu8ich@xefi550t7t6tjn36.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/x5f9g037rl5504pl
