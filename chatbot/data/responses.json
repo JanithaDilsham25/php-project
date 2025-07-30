@@ -186,6 +186,114 @@
     {
       "keywords": ["study group", "peer learning", "classmates", "collaboration"],
       "response": "Join study groups and connect with fellow students through our community forums and discussion boards!"
+    },
+    {
+      "keywords": ["web development", "frontend", "backend", "full stack", "html", "css", "javascript", "react", "angular", "vue"],
+      "response": "Master web development with our comprehensive courses covering HTML/CSS, JavaScript, React, Angular, and backend technologies. Build real-world projects!"
+    },
+    {
+      "keywords": ["python", "java", "c++", "programming", "coding", "software development", "algorithms", "data structures"],
+      "response": "Learn programming fundamentals with our courses in Python, Java, C++, and more. Covers algorithms, data structures, and best practices."
+    },
+    {
+      "keywords": ["data science", "machine learning", "ai", "artificial intelligence", "tensorflow", "pytorch", "pandas", "numpy"],
+      "response": "Dive into data science and AI with hands-on courses covering machine learning, deep learning, and popular frameworks like TensorFlow and PyTorch."
+    },
+    {
+      "keywords": ["mobile development", "android", "ios", "react native", "flutter", "swift", "kotlin", "app development"],
+      "response": "Build mobile apps for Android and iOS using React Native, Flutter, Swift, or Kotlin. From basics to publishing on app stores!"
+    },
+    {
+      "keywords": ["database", "sql", "mysql", "postgresql", "mongodb", "nosql", "data modeling"],
+      "response": "Master database management with comprehensive SQL and NoSQL courses. Learn MySQL, PostgreSQL, MongoDB, and advanced data modeling."
+    },
+    {
+      "keywords": ["cybersecurity", "ethical hacking", "penetration testing", "network security", "information security"],
+      "response": "Protect digital assets with our cybersecurity courses covering ethical hacking, penetration testing, and advanced security practices."
+    },
+    {
+      "keywords": ["ui design", "ux design", "graphic design", "photoshop", "figma", "adobe", "design thinking"],
+      "response": "Create stunning designs with our UI/UX courses. Learn Figma, Adobe Creative Suite, design thinking, and user-centered design principles."
+    },
+    {
+      "keywords": ["cloud computing", "aws", "azure", "google cloud", "docker", "kubernetes", "devops"],
+      "response": "Master cloud technologies with courses on AWS, Azure, GCP, Docker, and Kubernetes. Perfect for modern DevOps and cloud architecture."
+    },
+    {
+      "keywords": ["blockchain", "cryptocurrency", "smart contracts", "ethereum", "solidity", "web3"],
+      "response": "Explore blockchain technology with courses on cryptocurrency, smart contracts, Ethereum, Solidity, and decentralized applications (DApps)."
+    },
+    {
+      "keywords": ["game development", "unity", "unreal engine", "game design", "3d modeling", "animation"],
+      "response": "Create amazing games with our game development courses using Unity, Unreal Engine, and advanced 3D modeling techniques."
+    },
+    {
+      "keywords": ["digital marketing", "seo", "social media", "content marketing", "google ads", "facebook ads"],
+      "response": "Boost your marketing skills with courses on SEO, social media marketing, Google Ads, content strategy, and digital advertising."
+    },
+    {
+      "keywords": ["business analytics", "excel", "power bi", "tableau", "data visualization", "statistics"],
+      "response": "Analyze business data effectively with courses on Excel, Power BI, Tableau, and statistical analysis for business insights."
+    },
+    {
+      "keywords": ["project management", "agile", "scrum", "kanban", "pmp", "project planning"],
+      "response": "Learn professional project management with Agile, Scrum methodologies, and prepare for PMP certification with our comprehensive courses."
+    },
+    {
+      "keywords": ["networking", "cisco", "ccna", "network administration", "tcp ip", "routing", "switching"],
+      "response": "Master computer networking with CISCO CCNA preparation, TCP/IP fundamentals, routing, switching, and network troubleshooting."
+    },
+    {
+      "keywords": ["linux", "unix", "command line", "bash", "shell scripting", "system administration"],
+      "response": "Become proficient in Linux/Unix systems with courses on command line, bash scripting, and system administration skills."
+    },
+    {
+      "keywords": ["version control", "git", "github", "gitlab", "bitbucket", "source control"],
+      "response": "Master version control with comprehensive Git courses covering GitHub, GitLab, branching strategies, and collaborative development."
+    },
+    {
+      "keywords": ["testing", "automation testing", "selenium", "jest", "unit testing", "qa"],
+      "response": "Learn software testing with courses on manual testing, automation using Selenium, unit testing frameworks, and QA best practices."
+    },
+    {
+      "keywords": ["api", "rest", "graphql", "microservices", "backend development", "node.js"],
+      "response": "Build robust APIs and microservices with courses on REST, GraphQL, Node.js, and modern backend development practices."
+    },
+    {
+      "keywords": ["portfolio", "github portfolio", "showcase", "projects", "resume building"],
+      "response": "Build an impressive portfolio with our guidance on showcasing projects, creating GitHub profiles, and professional resume building."
+    },
+    {
+      "keywords": ["interview preparation", "coding interview", "technical interview", "job hunting", "career transition"],
+      "response": "Ace your interviews with our comprehensive preparation courses covering coding challenges, system design, and behavioral interviews."
+    },
+    {
+      "keywords": ["freelancing", "remote work", "gig economy", "side hustle", "independent contractor"],
+      "response": "Start your freelancing journey with courses on finding clients, pricing services, and building a successful remote career."
+    },
+    {
+      "keywords": ["startup", "entrepreneurship", "business plan", "mvp", "lean startup"],
+      "response": "Launch your startup with courses on entrepreneurship, business planning, MVP development, and lean startup methodologies."
+    },
+    {
+      "keywords": ["soft skills", "communication", "leadership", "teamwork", "presentation skills"],
+      "response": "Develop essential soft skills with courses on communication, leadership, teamwork, and professional presentation techniques."
+    },
+    {
+      "keywords": ["productivity", "time management", "organization", "workflow", "efficiency"],
+      "response": "Boost your productivity with courses on time management, organization techniques, and optimizing your learning workflow."
+    },
+    {
+      "keywords": ["industry trends", "technology trends", "future skills", "emerging technologies"],
+      "response": "Stay ahead with our courses on emerging technologies and industry trends. Learn the skills that will be in demand tomorrow."
+    },
+    {
+      "keywords": ["1-on-1", "personal mentor", "private tutoring", "individual coaching"],
+      "response": "Get personalized attention with our 1-on-1 mentoring sessions and private tutoring options for accelerated learning."
+    },
+    {
+      "keywords": ["enterprise", "corporate training", "custom curriculum", "team training"],
+      "response": "We offer customized enterprise solutions with tailored curriculum and dedicated support for corporate teams and organizations."
     }
 
   ],
