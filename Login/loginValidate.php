@@ -33,7 +33,7 @@
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['name'] = $row['name'];
                 
-                if($_SESSION['email'] == "janithadilsham@gmail.com"){
+                if($_SESSION['email'] == "janithadilsham@gmail.com" || $_SESSION['email'] == "pasindu93930@gmail.com"){
                     header("Location: ../Admin/admin.php?success=Login Successful");
                     exit();
                 }
