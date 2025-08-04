@@ -136,7 +136,6 @@ include "connection.php";
     </section>
     <!-- /Courses Section -->
 
-    <body class="min-h-[2000px]">
         <button class="flex fixed bottom-10 right-5 z-20 shadow-md" id="chat-bot-icon"><img src="chatbot/assets/chat-bot.png" class="w-[60px]" alt="Chat Bot"></button>
         <div id="chat-bot" class=" fixed bottom-20 right-2 z-10 w-[350px] h-[500px] rounded-lg">
             <div class="chat-bot-container relative hidden w-full p-2 h-full bg-gray-800 text-white flex flex-col rounded-lg">
@@ -156,10 +155,7 @@ include "connection.php";
             </div>
         </div>
 
-        <script src="script.js"></script>
-    </body>
-
-
+        <script src="chatbot/script.js"></script>
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
