@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "connection.php";
-include "chatbot/index.php";
+include "chatbot";
 ?>
 
 <!DOCTYPE html>
