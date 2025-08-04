@@ -15,15 +15,17 @@
     {
       "keywords": ["courses", "course", "class", "classes", "program", "programs", "learning", "education", "training"],
       "response": "We offer various courses including web development, programming, and design. Would you like to know more about any specific course? ",
-      "link": "https://example.com/courses/"
+      "link": "Project/courses.html"
     },
     {
       "keywords": ["contact", "phone", "email", "reach", "get in touch", "support", "customer service", "contact us"],
-      "response": "You can contact us through our contact page or reach out via email. How would you prefer to get in touch?"
+      "response": "You can contact us through our contact page or reach out via email. How would you prefer to get in touch?",
+      "link": "Project/contact.html"
     },
     {
       "keywords": ["about", "company", "who are you", "what do you do", "information", "details"],
-      "response": "We are an educational platform providing quality courses and learning resources. Learn more on our about page!"
+      "response": "We are an educational platform providing quality courses and learning resources. Learn more on our about page!",
+      "link": "Project/about.html"
     },
     {
       "keywords": ["price", "cost", "fee", "payment", "pricing", "charges", "rates"],
@@ -43,11 +45,13 @@
     },
     {
       "keywords": ["login", "sign in", "account", "access", "authenticate", "log in"],
-      "response": "You can log in to your account through our login page. If you don't have an account, you can sign up for one!"
+      "response": "You can log in to your account through our login page. If you don't have an account, you can sign up for one!",
+      "link": "Login/login.php"
     },
     {
       "keywords": ["registration", "sign up", "create account", "join"],
-      "response": "To register, please visit our sign-up page and fill out the required information. It's quick and easy!"
+      "response": "To register, please visit our sign-up page and fill out the required information. It's quick and easy!",
+      "link": "SignUp/signup.php"
     },
     {
       "keywords": ["faq", "frequently asked questions", "common questions", "help center", "support center"],
@@ -92,7 +96,7 @@
     {
       "keywords": ["login issues", "forgot password", "reset password", "account recovery", "can't log in"],
       "response": "If you're having trouble logging in, you can reset your password using the 'Forgot Password' link on the login page.",
-      "link":"https://example.com/courses/"
+      "link": "Login/login.php"
     },
     {
       "keywords": ["webinars", "live sessions", "online events", "workshops"],
@@ -109,7 +113,7 @@
     {
       "keywords": ["schedule", "timing", "class schedule", "course schedule", "timetable", "when"],
       "response": "You can view course schedules and timings on our courses page. Each course has flexible scheduling options to fit your needs.",
-      "link": "https://example.com/schedule/"
+      "link": "Project/courses.html"
     },
     {
       "keywords": ["instructor", "teacher", "tutor", "mentor", "faculty", "staff"],
@@ -149,7 +153,8 @@
     },
     {
       "keywords": ["progress", "tracking", "completion", "status", "how am i doing"],
-      "response": "You can track your progress in your student dashboard. It shows completion percentage, grades, and upcoming assignments."
+      "response": "You can track your progress in your student dashboard. It shows completion percentage, grades, and upcoming assignments.",
+      "link": "To-Do/index.php"
     },
     {
       "keywords": ["assignment", "homework", "project", "task", "exercise"],
@@ -157,7 +162,8 @@
     },
     {
       "keywords": ["quiz", "test", "exam", "assessment", "evaluation"],
-      "response": "Courses include quizzes and assessments to test your understanding. Don't worry - you can retake them if needed!"
+      "response": "Courses include quizzes and assessments to test your understanding. Don't worry - you can retake them if needed!",
+      "link": "Project/quiz/quiz.php"
     },
     {
       "keywords": ["career", "job", "employment", "hiring", "career help"],
@@ -281,7 +287,8 @@
     },
     {
       "keywords": ["productivity", "time management", "organization", "workflow", "efficiency"],
-      "response": "Boost your productivity with courses on time management, organization techniques, and optimizing your learning workflow."
+      "response": "Boost your productivity with courses on time management, organization techniques, and optimizing your learning workflow.",
+      "link": "To-Do/index.php"
     },
     {
       "keywords": ["industry trends", "technology trends", "future skills", "emerging technologies"],
@@ -293,7 +300,8 @@
     },
     {
       "keywords": ["enterprise", "corporate training", "custom curriculum", "team training"],
-      "response": "We offer customized enterprise solutions with tailored curriculum and dedicated support for corporate teams and organizations."
+      "response": "We offer customized enterprise solutions with tailored curriculum and dedicated support for corporate teams and organizations.",
+      "link": "Admin/admin.php"
     }
 
   ],
