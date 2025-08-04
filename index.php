@@ -136,12 +136,13 @@ include "connection.php";
     </section>
     <!-- /Courses Section -->
 
-    <button class="flex fixed bottom-10 right-5 z-20 shadow-md" id="chat-bot-icon"><img src="chatbot/assets/chat-bot.png" class="w-[60px]" alt="Chat Bot"></button>
+    <body class="min-h-[2000px]">
+        <button class="flex fixed bottom-10 right-5 z-20 shadow-md" id="chat-bot-icon"><img src="./assets/chat-bot.png" class="w-[60px]" alt="Chat Bot"></button>
         <div id="chat-bot" class=" fixed bottom-20 right-2 z-10 w-[350px] h-[500px] rounded-lg">
             <div class="chat-bot-container relative hidden w-full p-2 h-full bg-gray-800 text-white flex flex-col rounded-lg">
                 <div class="text-center relative chat-header text-green-400 text-2xl font-bold border-b-2 border-green-500 p-2">
                     <h2 class="my-2">Chat Bot</h2>
-                    <button id="close_chat" class="absolute top-4 text-green-400 right-2 text-white hover:text-red-500" onclick="hideChatBot()"><img src="chatbot/assets/close.png" alt="Close" class="w-[25px]"></button>
+                    <button id="close_chat" class="absolute top-4 text-green-400 right-2 text-white hover:text-red-500" onclick="hideChatBot()"><img src="./assets/close.png" alt="Close" class="w-[25px]"></button>
                 </div>
                 <div class="chat-body relative p-4 my-4 overflow-y-auto flex-1">
                     <div id="mydiv">
@@ -150,10 +151,13 @@ include "connection.php";
                 </div>
                 <div class="chat-footer relative border-green-400 bg-gray-700 w-[95%] p-2 mx-auto flex items-center justify-between">
                     <input type="text"  placeholder="Type your message..." class=" p-2 w-full md:w-[80%] rounded-lg bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500">
-                    <button class="cursor-pointer" id="send_button"><img src="chatbot/assets/send.png" alt="send"  class="w-[35px] z-20"/></button>
+                    <button class="cursor-pointer" id="send_button"><img src="./assets/send.png" alt="send"  class="w-[35px] z-20"/></button>
                 </div>
             </div>
         </div>
+
+        <script src="script.js"></script>
+    </body>
 
 
   </main>
@@ -181,8 +185,7 @@ include "connection.php";
   <script src="Project/assets/vendor/aos/aos.js"></script>
   <script src="Project/assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="Project/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="Project/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="chatbot/script.js"></script>        
+  <script src="Project/assets/vendor/swiper/swiper-bundle.min.js"></script>  
 
   <!-- Main JS File -->
   <script src="Project/assets/js/main.js"></script>
