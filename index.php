@@ -49,6 +49,7 @@ include "connection.php";
           <li><a href="Project/quiz/quiz.php">Quiz</a></li>
           <li><a href="/To-Do/index.php">To-Do</a></li>
           <li><a href="Project/contact.html">Contact</a></li>
+          <li><a href="chatbot/index.php">Contact</a></li>
 
           <!-- Conditionally display login/logout and username based on session -->
           <?php if (isset($_SESSION['email'])): ?>
